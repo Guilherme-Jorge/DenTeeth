@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,7 +16,7 @@
         android:textSize="24sp"
         android:fontFamily="@font/pacifico"
         android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="32dp"
         />
@@ -27,7 +28,7 @@
         android:fontFamily="@font/inter_regular"
         android:textSize="16sp"
         android:layout_marginTop="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/tvBemVindo"
+        app:layout_constraintStart_toStartOf="@+id/tvBemVindo"
         app:layout_constraintTop_toBottomOf="@+id/tvBemVindo"
         android:text="Aqui você encontra atendimentos simplificados."/>
 
@@ -54,12 +55,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivBemVindo"/>
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="Senha"
+        android:inputType="textPassword"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
         android:background="@drawable/edittext_border"
@@ -91,6 +93,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnEntrar">
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSemConta"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -99,7 +102,8 @@
             android:textSize="16sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:textColor="@color/baby_blue"
+            android:id="@+id/tvRegistrar"
+            android:textColor="@color/baby_blue_500"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Registrar-se."
