@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TermosDeUso">
+    tools:context=".TermosDeUsoActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTermosDeUsoTitulo"
@@ -83,7 +83,7 @@
         android:text="Aceitar"
         android:fontFamily="@font/inter_regular"
         android:layout_marginLeft="15dp"
-        android:backgroundTint="@color/azulescurostyle"
+        android:backgroundTint="@color/blue_main"
         app:layout_constraintLeft_toRightOf="@id/btnRecusar"
         app:layout_constraintTop_toBottomOf="@id/tvTermosDeUso"
         app:layout_constraintEnd_toEndOf="@id/tvTermosDeUso"/>

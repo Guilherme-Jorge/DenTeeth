@@ -12,7 +12,7 @@
         android:theme="@style/Theme.DenTeeth"
         tools:targetApi="31">
         <activity
-            android:name=".TermosDeUso"
+            android:name=".TermosDeUsoActivity"
             android:exported="false" />
         <activity
             android:name=".TelaInicioActivity"
