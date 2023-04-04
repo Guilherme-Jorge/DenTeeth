@@ -67,7 +67,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvSubtitulo2"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnRecusar"
+        android:id="@+id/btnRecusarTermos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -80,7 +80,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvTermosDeUso" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnAceitar"
+        android:id="@+id/btnAceitarTermos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -89,7 +89,7 @@
         android:fontFamily="@font/inter_regular"
         android:layout_marginLeft="15dp"
         android:backgroundTint="@color/blue_main"
-        app:layout_constraintLeft_toRightOf="@id/btnRecusar"
+        app:layout_constraintLeft_toRightOf="@id/btnRecusarTermos"
         app:layout_constraintTop_toBottomOf="@id/tvTermosDeUso"
         app:layout_constraintEnd_toEndOf="@id/tvTermosDeUso"/>
 
@@ -100,6 +100,6 @@
         android:text="* * Leia os Termos até o final para aceitar"
         android:fontFamily="@font/inter_regular"
         android:layout_marginTop="36dp"
-        app:layout_constraintTop_toBottomOf="@id/btnAceitar"/>
+        app:layout_constraintTop_toBottomOf="@id/btnAceitarTermos"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
