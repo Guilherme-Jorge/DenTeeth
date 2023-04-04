@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginHorizontal="24dp"
     tools:context=".TermosDeUsoActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -11,14 +12,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Termos De Uso"
+        android:layout_marginTop="4dp"
         android:textSize="35dp"
-        android:paddingStart="10dp"
-        android:paddingTop="30dp"
         android:textColor="@color/black"
         android:fontFamily="@font/pacifico_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
+
+    <ImageView
+        android:id="@+id/ivProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:src="@drawable/progress_bar_03"
+        app:layout_constraintTop_toBottomOf="@id/tvTermosDeUsoTitulo"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSubtitulo1"
@@ -28,17 +35,17 @@
         android:textSize="20dp"
         android:fontFamily="@font/inter_regular"
         android:layout_marginTop="15dp"
-        android:layout_marginLeft="10dp"
-        app:layout_constraintTop_toBottomOf="@id/tvTermosDeUsoTitulo"
+        app:layout_constraintTop_toBottomOf="@id/ivProgressBar"
         />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSubtitulo2"
-        android:layout_width="match_parent"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:text="Agora, leia e aceite os termos de uso:"
         android:textSize="20dp"
         android:fontFamily="@font/inter_regular"
-        android:paddingStart="10dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvSubtitulo1"
         />
 
@@ -46,16 +53,14 @@
         android:id="@+id/tvTermosDeUso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="26dp"
 
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
         android:paddingTop="5dp"
         android:paddingBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:background="@drawable/borda"
-        android:text="Lorem ipsum dolor sit amet. Quo eius autem et tempora earum sed autem galisum quo velit molestiae et odit officia est cupiditate quia vel blanditiis voluptatibus. Et excepturi repellendus in dolor quod in impedit illum quo inventore porro. Eum illo veniam in consequuntur provident id quaerat voluptatem et illum voluptas qui ratione ipsam ea nobis deserunt est omnis ipsum. Qui ipsum necessitatibus aut"
+        android:text="Este site foi criado e desenvolvido com a função de trazer conteúdo informativo de alta qualidade, a venda de produtos físicos, digitais e a divulgação de prestação de serviço. A EMPRESA busca através da criação de conteúdo de alta qualidade, desenvolvido por profissionais da área, trazer o conhecimento ao alcance de todos, assim como a divulgação dos próprios serviços."
         android:textColor="@color/black"
         android:textSize="20dp"
         android:fontFamily="@font/inter_regular"
@@ -65,7 +70,7 @@
         android:id="@+id/btnRecusar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:text="Recusar"
         android:fontFamily="@font/inter_regular"
         android:textColor="@color/white"
@@ -78,7 +83,7 @@
         android:id="@+id/btnAceitar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
 
         android:text="Aceitar"
         android:fontFamily="@font/inter_regular"
@@ -94,11 +99,7 @@
         android:layout_height="wrap_content"
         android:text="* * Leia os Termos até o final para aceitar"
         android:fontFamily="@font/inter_regular"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintTop_toBottomOf="@id/btnAceitar"/>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
