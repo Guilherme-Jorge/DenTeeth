@@ -12,6 +12,12 @@
         android:theme="@style/Theme.DenTeeth"
         tools:targetApi="31">
         <activity
+            android:name=".TelaCameraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FotoPerfilActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegistroActivity"
             android:exported="false" />
         <activity
