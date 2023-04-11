@@ -1,4 +1,4 @@
-package br.edu.puccampinas.myapplication
+package br.edu.puccampinas.denteeth
 
 import org.junit.Test
 
