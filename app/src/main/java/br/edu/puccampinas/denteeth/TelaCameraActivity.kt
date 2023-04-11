@@ -1,16 +1,15 @@
-package com.example.cameraxexample
+package br.edu.puccampinas.denteeth
 
 import android.Manifest
 import android.content.ContentValues
+import android.content.Intent
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.ImageCapture
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.cameraxexample.databinding.ActivityMainBinding
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import android.widget.Toast
@@ -20,33 +19,44 @@ import androidx.camera.core.CameraSelector
 import android.util.Log
 import androidx.camera.core.ImageCaptureException
 import androidx.core.content.PermissionChecker
+import br.edu.puccampinas.denteeth.databinding.ActivityTelaCameraBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 
-class MainActivity : AppCompatActivity() {
+class TelaCameraActivity : AppCompatActivity() {
 
-    private lateinit var viewBinding: ActivityMainBinding
+    private lateinit var binding: ActivityTelaCameraBinding
     private lateinit var cameraExecutor: ExecutorService
 
     private var imageCapture: ImageCapture? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(viewBinding.root)
+        binding = ActivityTelaCameraBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        if (allPermissionsGranted()) {
-            startCamera()
-        } else {
-            ActivityCompat.requestPermissions(
-                this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
-            )
+        binding.btnDeixarDepois.setOnClickListener {
+            val intentTermosDeUso = Intent(this, TermosDeUsoActivity::class.java)
+
+//            val dadosProfissional = intent.getSerializableExtra("profissional")
+//
+//            intentTermosDeUso.putExtra("profissional", dadosProfissional)
+
+            this.startActivity(intentTermosDeUso)
         }
 
-        viewBinding.mbtnCapture.setOnClickListener { takePhoto() }
-
-        cameraExecutor = Executors.newSingleThreadExecutor()
+//        if (allPermissionsGranted()) {
+//            startCamera()
+//        } else {
+//            ActivityCompat.requestPermissions(
+//                this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
+//            )
+//        }
+//
+//        binding.btnCapture.setOnClickListener { takePhoto() }
+//
+//        cameraExecutor = Executors.newSingleThreadExecutor()
     }
 
     private fun takePhoto() {
@@ -84,7 +94,7 @@ class MainActivity : AppCompatActivity() {
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
 
             val preview = Preview.Builder().build().also {
-                it.setSurfaceProvider(viewBinding.pvViewFinder.surfaceProvider)
+                it.setSurfaceProvider(binding.pvViewFinder.surfaceProvider)
             }
 
             imageCapture = ImageCapture.Builder().build()
