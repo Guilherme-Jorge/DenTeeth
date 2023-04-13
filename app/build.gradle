@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'br.edu.puccampinas.myapplication'
+    namespace 'br.edu.puccampinas.denteeth'
     compileSdk 33
 
     defaultConfig {
-        applicationId "br.edu.puccampinas.myapplication"
+        applicationId "br.edu.puccampinas.denteeth"
         minSdk 29
         targetSdk 33
         versionCode 1

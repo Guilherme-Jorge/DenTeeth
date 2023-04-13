@@ -1,4 +1,4 @@
-package br.edu.puccampinas.myapplication
+package br.edu.puccampinas.denteeth
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("br.edu.puccampinas.myapplication", appContext.packageName)
+        assertEquals("br.edu.puccampinas.denteeth", appContext.packageName)
     }
 }

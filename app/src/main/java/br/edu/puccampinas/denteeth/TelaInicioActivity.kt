@@ -1,4 +1,4 @@
-package br.edu.puccampinas.myapplication
+package br.edu.puccampinas.denteeth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.AppCompatTextView
-import br.edu.puccampinas.myapplication.databinding.ActivityTelaInicioBinding
+import br.edu.puccampinas.denteeth.databinding.ActivityTelaInicioBinding
 
 class TelaInicioActivity : AppCompatActivity() {
 
