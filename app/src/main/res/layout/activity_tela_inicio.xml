@@ -1,115 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="24dp"
+    android:layout_marginHorizontal="16dp"
+    android:padding="8dp"
     tools:context=".TelaInicioActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBemVindo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bem vindo ao DenTeeth"
-        android:textSize="24sp"
-        android:fontFamily="@font/pacifico"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="32dp"
-        />
+        android:fontFamily="@font/pacifico"
+        android:text="@string/label_bem_vindo"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSubTexto"
         android:layout_width="255dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/inter_regular"
-        android:textSize="16sp"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/tvBemVindo"
-        app:layout_constraintTop_toBottomOf="@+id/tvBemVindo"
-        android:text="Aqui você encontra atendimentos simplificados."/>
+        android:fontFamily="@font/inter_regular"
+        android:text="@string/label_bem_vindo_description"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/tvBemVindo"
+        app:layout_constraintTop_toBottomOf="@id/tvBemVindo" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivBemVindo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/denteeth_bem_vindo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSubTexto"
-        android:src="@drawable/denteeth_bem_vindo"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSubTexto" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etEmail"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiEmail"
+        style="?attr/textInputOutlinedDenseStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="E-mail"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
-        android:background="@drawable/edittext_border"
-        android:fontFamily="@font/inter_regular"
-        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/label_email"
+        app:boxStrokeWidth="2dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivBemVindo"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivBemVindo">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etSenha"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_regular" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiSenha"
+        style="?attr/textInputOutlinedDenseStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Senha"
-        android:inputType="textPassword"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
-        android:background="@drawable/edittext_border"
-        android:fontFamily="@font/inter_regular"
-        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/label_senha"
+        app:boxStrokeWidth="2dp"
+        app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tiEmail">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_regular"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/btnEntrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Entrar"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/inter_regular"
+        android:text="@string/label_entrar"
+        android:textColor="@color/black"
         android:textSize="16sp"
-        android:backgroundTint="@color/blue_main"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etSenha"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tiSenha" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnEntrar">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvSemConta"
-            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Não tenho conta."
             android:fontFamily="@font/inter_regular"
+            android:text="@string/label_sem_conta"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvRegistrar"
-            android:textColor="@color/baby_blue_500"
+        <Button
+            android:id="@+id/btnRegistrar"
+            style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Registrar-se."
             android:fontFamily="@font/inter_bold"
-            android:textSize="16sp"/>
+            android:text="@string/label_registrar_se"
+            android:textColor="@color/baby_blue_500"
+            android:textSize="16sp" />
     </LinearLayout>
+
+    <!--    <androidx.appcompat.widget.AppCompatTextView-->
+    <!--        android:id="@+id/tvSemConta"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:fontFamily="@font/inter_regular"-->
+    <!--        android:layout_marginTop="8dp"-->
+    <!--        android:text="Não tenho conta."-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textSize="16sp" -->
+    <!--        app:layout_constraintTop_toBottomOf="@id/btnEntrar"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintEnd_toStartOf="@id/tvRegistrar"/>-->
+
+    <!--    <androidx.appcompat.widget.AppCompatTextView-->
+    <!--        android:id="@+id/tvRegistrar"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:fontFamily="@font/inter_bold"-->
+    <!--        android:layout_marginTop="8dp"-->
+    <!--        android:text=" Registrar-se."-->
+    <!--        android:textColor="@color/baby_blue_500"-->
+    <!--        android:textSize="16sp"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/btnEntrar"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/tvSemConta"/>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

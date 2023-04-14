@@ -4,143 +4,195 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="29dp"
+    android:layout_marginHorizontal="16dp"
+    android:padding="8dp"
     tools:context=".RegistroActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCriarConta"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/pacifico_regular"
-        android:text="Crie sua conta"
+        android:text="@string/label_crie_sua_conta"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ivBarra"
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="24dp"
         android:src="@drawable/progress_bar_01"
         app:layout_constraintTop_toBottomOf="@id/tvCriarConta" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txtDadosPessoais"
+        android:id="@+id/tvDadosPessoais"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dados Pessoais"
+        android:fontFamily="@font/inter_regular"
+        android:text="@string/label_dados_pessoais"
         android:textColor="@color/black"
-        android:textSize="26sp"
+        android:textSize="24sp"
         app:layout_constraintTop_toBottomOf="@id/ivBarra" />
 
-    <EditText
-        android:id="@+id/etNome"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiNome"
+        style="?attr/textInputOutlinedDenseStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/edittext_border"
-        android:hint="Nome*"
-        android:padding="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/txtDadosPessoais" />
-
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/edittext_border"
-        android:hint="Email*"
-        android:inputType="textEmailAddress"
-        android:padding="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/etNome" />
-
-    <EditText
-        android:id="@+id/etSenha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:background="@drawable/edittext_border"
-        android:hint="Senha*"
-        android:inputType="textVisiblePassword"
-        android:padding="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
-
-    <EditText
-        android:id="@+id/etTelefone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:background="@drawable/edittext_border"
-        android:hint="Telefone*"
-        android:inputType="phone"
-        android:padding="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/etSenha" />
-
-    <!--    <androidx.appcompat.widget.LinearLayoutCompat-->
-    <!--        android:id="@+id/llEndereco"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:orientation="horizontal"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/etTelefone">-->
-
-    <!--        <include layout="@layout/add_endereco"></include>-->
-
-    <!--    </androidx.appcompat.widget.LinearLayoutCompat>-->
-
-    <EditText
-        android:id="@+id/etEndereco1"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:background="@drawable/edittext_border"
-        android:hint="Endereço de atendimento 1*"
-        android:padding="8dp"
+        android:hint="@string/label_nome_req"
+        app:boxStrokeWidth="2dp"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTelefone" />
+        app:layout_constraintTop_toBottomOf="@id/tvDadosPessoais">
 
-    <com.google.android.material.button.MaterialButton
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_regular" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiEmail"
+        style="?attr/textInputOutlinedDenseStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/label_email_req"
+        app:boxStrokeWidth="2dp"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tiNome">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_regular" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiSenha"
+        style="?attr/textInputOutlinedDenseStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/label_senha_req"
+        app:boxStrokeWidth="2dp"
+        app:endIconMode="password_toggle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tiEmail">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_regular"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiTelefone"
+        style="?attr/textInputOutlinedDenseStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/label_telefone_req"
+        app:boxStrokeWidth="2dp"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tiSenha">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etTelefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_regular" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiEndereco1"
+        style="?attr/textInputOutlinedDenseStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/label_endereco1_req"
+        app:boxStrokeWidth="2dp"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tiTelefone">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEndereco1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_regular" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
         android:id="@+id/btnAdicionarEndereço"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/black"
-        android:text="+ Adicionar Endereço"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/inter_regular"
+        android:text="@string/label_adicionar_endereco"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etEndereco1" />
+        app:layout_constraintTop_toBottomOf="@id/tiEndereco1" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCurriculo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="2dp"
-        android:text="Currículo"
+        android:fontFamily="@font/inter_regular"
+        android:text="@string/label_curriculo"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintTop_toBottomOf="@+id/btnAdicionarEndereço" />
 
-    <EditText
-        android:id="@+id/etCurriculo"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiCurriculo"
+        style="?attr/textInputOutlinedDenseStyle"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginBottom="1dp"
-        android:background="@drawable/edittext_border"
-        android:gravity="top"
-        android:hint="Digite aqui..."
-        android:padding="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/tvCurriculo" />
+        android:layout_height="wrap_content"
+        android:hint="@string/label_curriculo_req"
+        app:boxStrokeWidth="2dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="2000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCurriculo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCurriculo"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:fontFamily="@font/inter_regular"
+            android:gravity="top" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnConfirmarDados"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:backgroundTint="@color/black"
-        android:text="Confirmar"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/inter_regular"
+        android:text="@string/label_confirmar"
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/etCurriculo" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

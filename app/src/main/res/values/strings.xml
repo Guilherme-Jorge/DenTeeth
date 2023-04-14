@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">DenTeeth</string>
+    <string name="label_bem_vindo">Bem vindo ao DenTeeth</string>
+    <string name="label_bem_vindo_description">Aqui você encontra atendimentos simplificados.</string>
+    <string name="label_email">E-mail</string>
+    <string name="label_senha">Senha</string>
+    <string name="label_entrar">Entrar</string>
+    <string name="label_sem_conta">Não tenho conta.</string>
+    <string name="label_registrar_se">Registrar-se</string>
+    <string name="label_crie_sua_conta">Crie sua conta</string>
+    <string name="label_nome">Nome</string>
+    <string name="label_telefone_req">Telefone*</string>
+    <string name="label_senha_req">Senha*</string>
+    <string name="label_email_req">Email*</string>
+    <string name="label_endereco1_req">Endereço de atendimento 1*</string>
+    <string name="label_curriculo_req">Digite aqui...</string>
+    <string name="label_nome_req">Nome*</string>
+    <string name="label_dados_pessoais">Dados Pessoais</string>
+    <string name="label_adicionar_endereco">+  Adicionar Endereço</string>
+    <string name="label_curriculo">Currículo</string>
+    <string name="label_tirar_selfie">Tire uma selfie</string>
+    <string name="label_obs_foto">Obs: Certifique-se de estar em um ambiante iluminado e sem objetivos ou pessoas no fundo!</string>
+    <string name="label_deixar_para_depois">Deixar para depois</string>
+    <string name="label_subtitulo_1">Está quase lá!</string>
+    <string name="label_subtitulo_2">Agora, leia e aceite os termos de uso:</string>
+    <string name="label_obs_termos">* Ao clicar no botão aceitar você está de acordo com os Termos de Uso</string>
+    <string name="label_aceitar">Aceitar</string>
+    <string name="label_recusar">Recusar</string>
+    <string name="label_termos_de_uso">Termos De Uso</string>
+    <string name="label_confirmar">Confirmar</string>
 </resources>
