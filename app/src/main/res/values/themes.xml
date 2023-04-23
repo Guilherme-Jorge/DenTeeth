@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.DenTeeth" parent="Theme.Material3.Light.NoActionBar">
         <!-- Primary brand color. -->
@@ -12,5 +12,14 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+    </style>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.DenTeeth" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.DenTeeth.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="fontFamily">@font/pacifico_regular</item>
     </style>
 </resources>
