@@ -31,29 +31,29 @@ class TermosDeUsoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnAceitarTermos.setOnClickListener {
-            (activity as CriarContaActivity).adcionarProfissional()
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.d(TAG, "Usuário salvo com sucesso: ${task.result}")
-                        Toast.makeText(
-                            binding.root.context,
-                            "Usuário salvo com sucesso",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    } else {
-                        val e = task.exception
-                        if (e is FirebaseFunctionsException) {
-                            Log.e(TAG, "Erro ao salvar usuário: [${e.code}]")
-                        } else {
-                            Log.w(TAG, "Erro desconhecido: ${task.exception}")
-                            Toast.makeText(
-                                binding.root.context,
-                                "Usuário salvo com sucesso",
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
-                    }
-                }
+//            (activity as CriarContaActivity).adcionarProfissional()
+//                .addOnCompleteListener { task ->
+//                    if (task.isSuccessful) {
+//                        Log.d(TAG, "Usuário salvo com sucesso: ${task.result}")
+//                        Toast.makeText(
+//                            binding.root.context,
+//                            "Usuário salvo com sucesso",
+//                            Toast.LENGTH_LONG
+//                        ).show()
+//                    } else {
+//                        val e = task.exception
+//                        if (e is FirebaseFunctionsException) {
+//                            Log.e(TAG, "Erro ao salvar usuário: [${e.code}]")
+//                        } else {
+//                            Log.w(TAG, "Erro desconhecido: ${task.exception}")
+//                            Toast.makeText(
+//                                binding.root.context,
+//                                "Usuário salvo com sucesso",
+//                                Toast.LENGTH_LONG
+//                            ).show()
+//                        }
+//                    }
+//                }
         }
     }
 }

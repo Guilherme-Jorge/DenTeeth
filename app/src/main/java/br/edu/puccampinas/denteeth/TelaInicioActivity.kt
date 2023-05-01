@@ -16,9 +16,6 @@ class TelaInicioActivity : AppCompatActivity() {
         binding = ActivityTelaInicioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Inicializaçâo do Intent para a tela de Registro
-        val intentCriarConta = Intent(this, CriarContaActivity::class.java)
-
         binding.btnEntrar.setOnClickListener {
             hideSoftKeyboard(binding.btnEntrar)
 
@@ -36,6 +33,9 @@ class TelaInicioActivity : AppCompatActivity() {
         binding.btnRegistrar.setOnClickListener {
             hideSoftKeyboard(binding.btnRegistrar)
 
+            //Inicializaçâo do Intent para a tela de Registro
+            val intentCriarConta = Intent(this, CriarContaActivity::class.java)
+
             this.startActivity(intentCriarConta)
         }
     }
@@ -45,10 +45,4 @@ class TelaInicioActivity : AppCompatActivity() {
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(v.windowToken, 0)
     }
-
-//    private fun checkEmptyTextInput(input: TextInputLayout) {
-//        if (input.isEmpty()) {
-//            Snackbar.make(binding.root, "Campo de ${input.labelFor} vazio.", Snackbar.LENGTH_LONG).show()
-//        } else {}
-//    }
 }

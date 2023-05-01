@@ -6,6 +6,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -20,7 +21,6 @@ class CriarContaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
 
         binding = ActivityCriarContaBinding.inflate(layoutInflater)
@@ -46,26 +46,17 @@ class CriarContaActivity : AppCompatActivity() {
         imm.hideSoftInputFromWindow(v.windowToken, 0)
     }
 
-//    fun dadosProfissional(): HashMap<String, String> {
+//    fun adcionarProfissional(): Task<String> {
 //
-//        return hashMapOf(
-//            "nome" to binding.etNome.text.toString(),
-//            "telefone" to binding.etTelefone.text.toString(),
-//            "email" to binding.etEmail.text.toString(),
-//            "endereco1" to binding.etEndereco1.text.toString(),
-//            "curriculo" to binding.etCurriculo.text.toString()
-//        )
+//        val fragmentRegistro = RegistroFragment()
+//
+//        return FirebaseFunctions
+//            .getInstance("southamerica-east1")
+//            .getHttpsCallable("salvarDadosPessoais")
+//            .call(fragmentRegistro.dadosProfissional())
+//            .continueWith { task ->
+//                val result = task.result?.data as String
+//                result
+//            }
 //    }
-
-    fun adcionarProfissional(): Task<String> {
-
-        return FirebaseFunctions
-            .getInstance("southamerica-east1")
-            .getHttpsCallable("salvarDadosPessoais")
-            .call()
-            .continueWith { task ->
-                val result = task.result?.data as String
-                result
-            }
-    }
 }
