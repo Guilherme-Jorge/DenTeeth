@@ -4,29 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="16dp"
-    android:padding="8dp"
-    tools:context=".RegistroActivity">
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvCriarConta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/pacifico_regular"
-        android:text="@string/label_crie_sua_conta"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/ivBarra"
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:src="@drawable/progress_bar_01"
-        app:layout_constraintTop_toBottomOf="@id/tvCriarConta" />
+    tools:context=".RegistroFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvDadosPessoais"
@@ -36,11 +14,10 @@
         android:text="@string/label_dados_pessoais"
         android:textColor="@color/black"
         android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@id/ivBarra" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tiNome"
-        style="?attr/textInputOutlinedDenseStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/label_nome_req"
@@ -60,7 +37,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tiEmail"
-        style="?attr/textInputOutlinedDenseStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/label_email_req"
@@ -80,7 +56,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tiSenha"
-        style="?attr/textInputOutlinedDenseStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/label_senha_req"
@@ -101,7 +76,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tiTelefone"
-        style="?attr/textInputOutlinedDenseStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/label_telefone_req"
@@ -121,7 +95,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tiEndereco1"
-        style="?attr/textInputOutlinedDenseStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/label_endereco1_req"
@@ -164,7 +137,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tiCurriculo"
-        style="?attr/textInputOutlinedDenseStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/label_curriculo_req"
@@ -178,7 +150,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etCurriculo"
             android:layout_width="match_parent"
-            android:layout_height="96dp"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/inter_regular"
             android:gravity="top" />
 
