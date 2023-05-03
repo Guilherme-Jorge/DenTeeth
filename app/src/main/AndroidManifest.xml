@@ -12,6 +12,11 @@
         android:theme="@style/Theme.DenTeeth"
         tools:targetApi="31">
         <activity
+            android:name=".emergencia.ListaEmergenciaActivity"
+            android:exported="false"
+            android:label="@string/title_activity_lista_emergencia"
+            android:theme="@style/Theme.DenTeeth" />
+        <activity
             android:name=".CriarContaActivity"
             android:exported="false"
             android:label="@string/title_activity_criar_conta"
