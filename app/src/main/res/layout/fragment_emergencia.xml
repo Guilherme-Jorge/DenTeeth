@@ -8,7 +8,6 @@
 
     <TextView
         android:id="@+id/tvEmergenciaTitulo"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -81,6 +80,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMotivoEmergencia" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
