@@ -11,11 +11,15 @@ import androidx.navigation.fragment.findNavController
 import br.edu.puccampinas.denteeth.databinding.FragmentRegistroBinding
 import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.functions.FirebaseFunctionsException
+import com.google.firebase.ktx.Firebase
 
 class RegistroFragment : Fragment() {
 
+    private lateinit var auth: FirebaseAuth
     private var _binding: FragmentRegistroBinding? = null
     private val binding get() = _binding!!
     private val TAG = "DenTeeth Firebase"
@@ -98,6 +102,10 @@ class RegistroFragment : Fragment() {
     }
 
     fun adcionarProfissional(): Task<String> {
+
+        auth = Firebase.auth
+
+        auth.createUserWithEmailAndPassword(binding.etEmail.text.toString(),binding.etSenha.text.toString())
 
         return FirebaseFunctions
             .getInstance("southamerica-east1")
