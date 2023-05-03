@@ -11,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import br.edu.puccampinas.denteeth.databinding.ActivityCriarContaBinding
+import br.edu.puccampinas.denteeth.datastore.UserPreferencesRepository
 import com.google.android.gms.tasks.Task
 import com.google.firebase.functions.FirebaseFunctions
 
@@ -18,10 +19,13 @@ class CriarContaActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityCriarContaBinding
+    private lateinit var userPreferencesRepository: UserPreferencesRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+
+        userPreferencesRepository = UserPreferencesRepository.getInstance(this)
 
         binding = ActivityCriarContaBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -44,6 +48,14 @@ class CriarContaActivity : AppCompatActivity() {
 
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(v.windowToken, 0)
+    }
+
+    fun storeUserId(uid: String){
+        userPreferencesRepository.uid = uid
+    }
+
+    fun getFcmToken(): String{
+        return userPreferencesRepository.fcmToken
     }
 
 //    fun adcionarProfissional(): Task<String> {

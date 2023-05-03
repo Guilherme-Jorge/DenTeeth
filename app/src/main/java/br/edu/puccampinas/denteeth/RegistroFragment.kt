@@ -14,12 +14,15 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.functions.FirebaseFunctions
-import com.google.firebase.functions.FirebaseFunctionsException
+import com.google.firebase.functions.ktx.functions
 import com.google.firebase.ktx.Firebase
+import com.google.gson.GsonBuilder
 
 class RegistroFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var functions: FirebaseFunctions
+    private val gson = GsonBuilder().enableComplexMapKeySerialization().create()
     private var _binding: FragmentRegistroBinding? = null
     private val binding get() = _binding!!
     private val TAG = "DenTeeth Firebase"
@@ -63,56 +66,95 @@ class RegistroFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            adcionarProfissional()
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.d(TAG, "Usuário salvo com sucesso: ${task.result}")
-                        Toast.makeText(
-                            binding.root.context,
-                            "Usuário salvo com sucesso",
-                            Toast.LENGTH_LONG
-                        ).show()
-                        findNavController().navigate(R.id.action_RegistroFragment_to_TelaCameraFragment)
-                    } else {
-                        val e = task.exception
-                        if (e is FirebaseFunctionsException) {
-                            Log.e(TAG, "Erro ao salvar usuário: [${e.code}]")
-                        } else {
-                            Log.w(TAG, "Erro desconhecido: ${task.exception}")
-                            Toast.makeText(
-                                binding.root.context,
-                                "Usuário salvo com sucesso",
-                                Toast.LENGTH_LONG
-                            ).show()
-                            findNavController().navigate(R.id.action_RegistroFragment_to_TelaCameraFragment)
-                        }
-                    }
-                }
+            signUpNewAccount(
+                binding.etNome.text.toString(),
+                binding.etSenha.text.toString(),
+                binding.etEmail.text.toString(),
+                binding.etTelefone.text.toString(),
+                binding.etEndereco1.text.toString(),
+                binding.etCurriculo.text.toString(),
+                (activity as CriarContaActivity).getFcmToken()
+            )
         }
     }
-    fun dadosProfissional(): HashMap<String, String> {
 
-        return hashMapOf(
-            "nome" to binding.etNome.text.toString(),
-            "telefone" to binding.etTelefone.text.toString(),
-            "email" to binding.etEmail.text.toString(),
-            "endereco1" to binding.etEndereco1.text.toString(),
-            "curriculo" to binding.etCurriculo.text.toString()
-        )
-    }
-
-    fun adcionarProfissional(): Task<String> {
-
+    private fun signUpNewAccount(
+        nome: String,
+        password: String,
+        email: String,
+        telefone: String,
+        endereco1: String,
+        curriculo: String,
+        fcmToken: String
+    ) {
         auth = Firebase.auth
 
-        auth.createUserWithEmailAndPassword(binding.etEmail.text.toString(),binding.etSenha.text.toString())
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
 
-        return FirebaseFunctions
-            .getInstance("southamerica-east1")
+                    Log.d(TAG, "createUserWithEmail:success")
+                    val user = auth.currentUser
+                    (activity as CriarContaActivity).storeUserId(user!!.uid)
+
+                    updateUserProfile(
+                        nome,
+                        email,
+                        telefone,
+                        endereco1,
+                        curriculo,
+                        user!!.uid,
+                        fcmToken
+                    )
+                        .addOnCompleteListener(requireActivity()) { res ->
+                            if (res.result.status == "SUCCESS") {
+                                (activity as CriarContaActivity).hideSoftKeyboard(binding.btnConfirmarDados)
+                                Snackbar.make(
+                                    requireView(),
+                                    "Usuário cadastrado com sucesso!",
+                                    Snackbar.LENGTH_LONG
+                                ).show()
+                                findNavController().navigate(R.id.action_RegistroFragment_to_TelaCameraFragment)
+                            }
+                        }
+                } else {
+
+                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                    Toast.makeText(requireActivity(), "Authentication failed.", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+    }
+
+    private fun updateUserProfile(
+        nome: String,
+        email: String,
+        telefone: String,
+        endereco1: String,
+        curriculo: String,
+        uid: String,
+        fcmToken: String
+    ): Task<CustomResponse> {
+
+        functions = Firebase.functions("southamerica-east1")
+
+        val dadosProfissional = hashMapOf(
+            "nome" to nome,
+            "telefone" to telefone,
+            "email" to email,
+            "endereco1" to endereco1,
+            "curriculo" to curriculo,
+            "uid" to uid,
+            "fcmToken" to fcmToken
+        )
+
+        return functions
             .getHttpsCallable("salvarDadosPessoais")
-            .call(dadosProfissional())
+            .call(dadosProfissional)
             .continueWith { task ->
-                val result = task.result?.data as String
+
+                val result =
+                    gson.fromJson((task.result?.data as String), CustomResponse::class.java)
                 result
             }
     }
