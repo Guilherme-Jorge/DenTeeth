@@ -145,7 +145,8 @@ class RegistroFragment : Fragment() {
             "endereco1" to endereco1,
             "curriculo" to curriculo,
             "uid" to uid,
-            "fcmToken" to fcmToken
+            "fcmToken" to fcmToken,
+            "status" to true
         )
 
         return functions

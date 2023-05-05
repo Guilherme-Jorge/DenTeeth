@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".emergencia">
+    tools:context=".emergencia.EmergenciaFragment">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvEmergenciaTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:paddingTop="3dp"
         android:text="Analisar Emergencia"
         android:textSize="20sp"
@@ -38,7 +37,6 @@
         android:fontFamily="@font/inter_regular"
         android:paddingTop="10dp"
         android:text="Motivo da Emergencia"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivEmergenciaFoto" />
 
@@ -59,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvEmergenciaTexto" />
 
     <Button
-        android:id="@+id/btnEmergenciaAceitar"
+        android:id="@+id/btnAceitar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="200dp"
@@ -70,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvMotivoEmergencia" />
 
     <Button
-        android:id="@+id/btnEmergenciaNegar"
+        android:id="@+id/btnNegar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"

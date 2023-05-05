@@ -8,17 +8,11 @@ private const val USER_PREFERENCES_NAME = "prefs_tokens"
 private const val UID_KEY = "uid"
 private const val FCMTOKEN_KEY = "fcmToken"
 
-/**
- * Class that handles saving and retrieving user preferences
- */
 class UserPreferencesRepository private constructor(context: Context) {
 
     private val sharedPreferences =
         context.applicationContext.getSharedPreferences(USER_PREFERENCES_NAME, Context.MODE_PRIVATE)
 
-    /**
-     * Obter o UID.
-     */
     var uid: String = ""
         get() {
             return sharedPreferences.getString(UID_KEY, "")!!

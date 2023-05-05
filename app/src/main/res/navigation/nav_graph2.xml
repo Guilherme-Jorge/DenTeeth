@@ -8,21 +8,21 @@
     <fragment
         android:id="@+id/EmergenciaFragment"
         android:name="br.edu.puccampinas.denteeth.emergencia.EmergenciaFragment"
-        android:label="@string/first_fragment_label"
+        android:label="Emergência"
         tools:layout="@layout/fragment_emergencia">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            android:id="@+id/action_EmergenciaFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
         android:name="br.edu.puccampinas.denteeth.emergencia.SecondFragment"
-        android:label="@string/second_fragment_label"
+        android:label="Second Fragment"
         tools:layout="@layout/fragment_second">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            android:id="@+id/action_SecondFragment_to_EmergenciaFragment"
             app:destination="@id/EmergenciaFragment" />
     </fragment>
 </navigation>
