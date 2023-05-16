@@ -8,6 +8,7 @@ import android.content.Intent
 import android.media.RingtoneManager
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import br.edu.puccampinas.denteeth.R
 import br.edu.puccampinas.denteeth.datastore.UserPreferencesRepository
 import br.edu.puccampinas.denteeth.emergencia.EmergenciaFragment
@@ -19,11 +20,6 @@ class DefaultMessageService : FirebaseMessagingService() {
 
     private lateinit var userPreferencesRepository: UserPreferencesRepository
 
-    /***
-     * Evento disparado automaticamente
-     * quando o FCM envia uma mensagem. Lembrando que este serviço
-     * "DefaultMessageService" está registrado no Manifesto como um serviço.
-     */
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         val msgData = remoteMessage.data
         val msg = msgData["descricao"]
@@ -48,15 +44,6 @@ class DefaultMessageService : FirebaseMessagingService() {
 
     }
 
-    /***
-     * Este método cria uma Intent
-     * para a activity Main, vinculada a notificação.
-     * ou seja, quando acontecer a notificação, se o usuário clicar,
-     * abrirá a activity Main.
-     * Trabalhar isso para que dependendo da mensagem,
-     * você poderá abrir uma ou outra activity
-     * ou enviar um parametro na Intent para tratar qual fragment abrir.(desafio para vc fazer)
-     */
     private fun showNotification(messageBody: String, messageData: Map<String, String>) {
         val intent = Intent(this, ListaEmergenciaActivity::class.java)
         intent.putExtra("nome", messageData["nome"])
@@ -72,9 +59,10 @@ class DefaultMessageService : FirebaseMessagingService() {
         val channelId = getString(R.string.default_notification_channel_id)
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.drawable.ic_health)
+            .setSmallIcon(R.drawable.ic_tooth)
             .setContentTitle(getString(R.string.fcm_default_title_message))
             .setContentText(messageBody)
+            .setColor(ContextCompat.getColor(this, R.color.blue_main))
             .setAutoCancel(true)
             .setSound(defaultSoundUri)
             .setContentIntent(pendingIntent)
