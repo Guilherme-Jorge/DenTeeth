@@ -7,7 +7,10 @@
     android:fitsSystemWindows="true"
     tools:context=".TelaPrincipalActivity">
 
-    <include layout="@layout/content_tela_principal" />
+    <FrameLayout
+        android:id="@+id/flFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

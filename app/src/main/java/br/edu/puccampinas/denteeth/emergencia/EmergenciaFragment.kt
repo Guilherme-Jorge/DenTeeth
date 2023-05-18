@@ -45,7 +45,7 @@ class EmergenciaFragment : Fragment() {
 
             Glide.with(this)
                 .load((activity as AtenderEmergenciaActivity).intent.getStringExtra("fotos"))
-                .into(binding.ivEmergenciaFoto)
+                .into(binding.ivEmergenciaFotos)
         }
 
         binding.btnAceitar.setOnClickListener {

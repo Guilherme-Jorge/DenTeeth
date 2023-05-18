@@ -1,17 +1,11 @@
 package br.edu.puccampinas.denteeth
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import br.edu.puccampinas.denteeth.databinding.ActivityTelaPrincipalBinding
 import br.edu.puccampinas.denteeth.emergencia.EmergenciaFragment
-import br.edu.puccampinas.denteeth.emergencia.SecondFragment
 
 class TelaPrincipalActivity : AppCompatActivity() {
 
@@ -24,12 +18,12 @@ class TelaPrincipalActivity : AppCompatActivity() {
         binding = ActivityTelaPrincipalBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        replaceFragment(EmergenciaFragment())
+        replaceFragment(ListaEmergenciasFragment())
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when(item.itemId) {
                 R.id.item_emergencia -> {
-                    replaceFragment(FirstFragment())
+                    replaceFragment(ListaEmergenciasFragment())
                     true
                 }
                 R.id.item_perfil -> {
@@ -48,8 +42,9 @@ class TelaPrincipalActivity : AppCompatActivity() {
     }
 
     private fun replaceFragment (fragment: Fragment) {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.include, fragment)
+        val fragmentSupportManager = supportFragmentManager
+        val fragmentTransaction = fragmentSupportManager.beginTransaction()
+        fragmentTransaction.replace(R.id.flFragment, fragment)
         fragmentTransaction.commit()
     }
 }
