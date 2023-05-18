@@ -11,7 +11,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import br.edu.puccampinas.denteeth.databinding.ActivityTelaInicioBinding
-import br.edu.puccampinas.denteeth.emergencia.ListaEmergenciaActivity
+import br.edu.puccampinas.denteeth.emergencia.AtenderEmergenciaActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
@@ -83,8 +83,6 @@ class TelaInicioActivity : AppCompatActivity() {
                 // Directly ask for the permission
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
             }
-        } else {
-            // TODO: Colocar permissao para API < 33
         }
     }
 
@@ -96,9 +94,9 @@ class TelaInicioActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-//                    val intentListaEmergencia = Intent(this, ListaEmergenciaActivity::class.java)
-//
-//                    this.startActivity(intentListaEmergencia)
+                    val intentTelaPrincipal = Intent(this, TelaPrincipalActivity::class.java)
+
+                    this.startActivity(intentTelaPrincipal)
                     Snackbar.make(
                         binding.root,
                         "Login realizado com sucesso!",

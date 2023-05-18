@@ -11,8 +11,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import br.edu.puccampinas.denteeth.R
 import br.edu.puccampinas.denteeth.datastore.UserPreferencesRepository
-import br.edu.puccampinas.denteeth.emergencia.EmergenciaFragment
-import br.edu.puccampinas.denteeth.emergencia.ListaEmergenciaActivity
+import br.edu.puccampinas.denteeth.emergencia.AtenderEmergenciaActivity
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
@@ -45,7 +44,7 @@ class DefaultMessageService : FirebaseMessagingService() {
     }
 
     private fun showNotification(messageBody: String, messageData: Map<String, String>) {
-        val intent = Intent(this, ListaEmergenciaActivity::class.java)
+        val intent = Intent(this, AtenderEmergenciaActivity::class.java)
         intent.putExtra("nome", messageData["nome"])
         intent.putExtra("telefone", messageData["telefone"])
         intent.putExtra("fotos", messageData["fotos"])

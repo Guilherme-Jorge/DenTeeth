@@ -15,10 +15,15 @@
         android:theme="@style/Theme.DenTeeth"
         tools:targetApi="31">
         <activity
+            android:name=".TelaPrincipalActivity"
+            android:exported="false"
+            android:label="@string/title_activity_tela_principal"
+            android:theme="@style/Theme.DenTeeth" />
+        <activity
             android:name=".DisabledNotificationActivity"
             android:exported="false" />
         <activity
-            android:name=".emergencia.ListaEmergenciaActivity"
+            android:name=".emergencia.AtenderEmergenciaActivity"
             android:exported="false"
             android:label="@string/title_activity_lista_emergencia"
             android:theme="@style/Theme.DenTeeth" />
