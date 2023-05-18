@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_emergencia"
+        android:enabled="true"
+        android:icon="@drawable/icon_emergencia"
+        android:title="@string/label_emergencia" />
+
+    <item
+        android:id="@+id/item_perfil"
+        android:enabled="true"
+        android:icon="@drawable/icon_perfil"
+        android:title="@string/label_perfil" />
+
+    <item
+        android:id="@+id/item_reputacao"
+        android:enabled="true"
+        android:icon="@drawable/icon_reputacao"
+        android:title="@string/label_reputacao" />
+</menu>
