@@ -31,5 +31,9 @@
     <string name="title_activity_criar_conta">CriarContaActivity</string>
     <string name="title_activity_lista_emergencia">ListaEmergenciaActivity</string>
     <string name="default_notification_channel_id" translatable="false">canal_padrao</string>
-    <string name="fcm_default_title_message" translatable="false">Nova Emergencia</string>
+    <string name="fcm_default_title_message" translatable="false">Nova Emergência</string>
+    <string name="label_emergencia">Emergência</string>
+    <string name="label_perfil">Perfil</string>
+    <string name="label_reputacao">Reputação</string>
+    <string name="title_activity_tela_principal">TelaPrincipalActivity</string>
 </resources>
