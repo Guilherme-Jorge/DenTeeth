@@ -60,6 +60,7 @@ class ListaEmergenciasFragment : Fragment() {
         val doc = db.collection("emergencias").orderBy("dataHora")
         var emergencia: Emergencia
         doc.addSnapshotListener { value, e ->
+            allEmergencias.clear()
             if (e != null) {
                 Log.e("FirestoreListener", "Leitura falhou", e)
                 return@addSnapshotListener
