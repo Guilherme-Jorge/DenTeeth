@@ -46,8 +46,6 @@ class CriarContaActivity : AppCompatActivity() {
         navController = findNavController(R.id.nav_host_fragment_content_criar_conta)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
-
-        storeFcmToken()
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -63,16 +61,6 @@ class CriarContaActivity : AppCompatActivity() {
         imm.hideSoftInputFromWindow(v.windowToken, 0)
     }
 
-    private fun storeFcmToken(){
-        Firebase.messaging.token.addOnCompleteListener(OnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                return@OnCompleteListener
-            }
-            // guardar esse token.
-            userPreferencesRepository.fcmToken = task.result
-        })
-    }
-
     fun goToInicio() {
         val intentTelaInicio = Intent(this, TelaInicioActivity::class.java)
 
@@ -81,6 +69,7 @@ class CriarContaActivity : AppCompatActivity() {
 
     fun storeUserId(uid: String){
         userPreferencesRepository.uid = uid
+        userPreferencesRepository.updateUid(uid)
     }
 
     fun getFcmToken(): String{
