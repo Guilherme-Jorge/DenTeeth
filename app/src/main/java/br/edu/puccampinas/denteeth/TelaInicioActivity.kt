@@ -6,22 +6,29 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import br.edu.puccampinas.denteeth.databinding.ActivityTelaInicioBinding
+import br.edu.puccampinas.denteeth.datastore.UserPreferencesRepository
 import br.edu.puccampinas.denteeth.emergencia.AtenderEmergenciaActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import br.edu.puccampinas.denteeth.messaging.DefaultMessageService
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.ktx.messaging
 
 class TelaInicioActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTelaInicioBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var DefaultMessageService: DefaultMessageService
+    private lateinit var userPreferencesRepository: UserPreferencesRepository
 
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -35,10 +42,16 @@ class TelaInicioActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        userPreferencesRepository = UserPreferencesRepository.getInstance(this)
+
         binding = ActivityTelaInicioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         askNotificationPermission()
+
+        storeFcmToken()
+        Log.d("Teste", getFcmToken())
 
         binding.btnEntrar.setOnClickListener {
             hideSoftKeyboard(binding.btnEntrar)
@@ -94,6 +107,14 @@ class TelaInicioActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
+                    Log.d("Teste", auth.currentUser!!.uid)
+                    storeUserId(auth.currentUser!!.uid)
+                    Log.d("Teste", userPreferencesRepository.uid)
+
+
+                    DefaultMessageService = DefaultMessageService()
+                    DefaultMessageService.sendRegistrationToServer(getFcmToken())
+
                     val intentTelaPrincipal = Intent(this, TelaPrincipalActivity::class.java)
 
                     this.startActivity(intentTelaPrincipal)
@@ -112,5 +133,24 @@ class TelaInicioActivity : AppCompatActivity() {
                     }
                 }
             }
+    }
+
+    fun storeFcmToken(){
+        Firebase.messaging.token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                return@OnCompleteListener
+            }
+            // guardar esse token.
+            userPreferencesRepository.fcmToken = task.result
+        })
+    }
+
+    fun storeUserId(uid: String){
+        userPreferencesRepository.uid = uid
+        userPreferencesRepository.updateUid(uid)
+    }
+
+    fun getFcmToken(): String{
+        return userPreferencesRepository.fcmToken
     }
 }

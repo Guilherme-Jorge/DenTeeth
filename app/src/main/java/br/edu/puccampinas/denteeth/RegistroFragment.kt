@@ -103,7 +103,7 @@ class RegistroFragment : Fragment() {
                         telefone,
                         endereco1,
                         curriculo,
-                        user!!.uid,
+                        user.uid,
                         fcmToken
                     )
                         .addOnCompleteListener(requireActivity()) { res ->
@@ -153,7 +153,6 @@ class RegistroFragment : Fragment() {
             .getHttpsCallable("salvarDadosPessoais")
             .call(dadosProfissional)
             .continueWith { task ->
-
                 val result =
                     gson.fromJson((task.result?.data as String), CustomResponse::class.java)
                 result

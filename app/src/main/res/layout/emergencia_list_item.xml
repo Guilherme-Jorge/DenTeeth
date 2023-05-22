@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="16dp">
+    app:cardElevation="8dp"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="8dp">
 
-    <TextView
-        android:id="@+id/tvEmergenciaTempo"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="10h35"
-        android:fontFamily="@font/inter_regular"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/tvEmergenciaStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nova emergência"
-        android:textSize="12sp"
-        android:layout_marginStart="8dp"
-        android:layout_toEndOf="@id/tvEmergenciaTempo"
-        android:fontFamily="@font/inter_regular"
-        android:textStyle="bold" />
+        android:padding="4dp">
+        <TextView
+            android:id="@+id/tvEmergenciaTempo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_regular"
+            android:textSize="12sp" />
 
     <ImageView
-        android:id="@+id/ivEmergenciaFoto"
-        android:layout_width="145dp"
-        android:layout_height="145dp"
-        android:layout_below="@id/tvEmergenciaTempo"
-        android:layout_marginTop="4dp"/>
+            android:id="@+id/ivEmergenciaFoto"
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:layout_below="@id/tvEmergenciaTempo"
+            android:layout_marginTop="4dp"/>
+    </RelativeLayout>
 
-</RelativeLayout>
+</androidx.cardview.widget.CardView>

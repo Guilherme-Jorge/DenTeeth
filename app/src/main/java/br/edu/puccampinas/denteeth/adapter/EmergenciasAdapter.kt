@@ -14,14 +14,12 @@ import br.edu.puccampinas.denteeth.classes.Emergencia
 class EmergenciasAdapter(private val dataSet: List<Emergencia>) : ListAdapter<Emergencia, EmergenciasAdapter.EmergenciaViewHolder>(EmergenciaDiffCallback) {
     class EmergenciaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvEmergenciaTempo: TextView = itemView.findViewById(R.id.tvEmergenciaTempo)
-        private val tvEmergenciaStatus: TextView = itemView.findViewById(R.id.tvEmergenciaStatus)
         private val ivEmergenciaFoto: ImageView = itemView.findViewById(R.id.ivEmergenciaFoto)
         private var emergenciaCurrent: Emergencia? = null
 
         fun bind(e: Emergencia) {
             emergenciaCurrent = e
             tvEmergenciaTempo.text = e.dataHora.toString()
-            tvEmergenciaStatus.text = e.status.toString()
 //            Glide.with(ListaEmergenciasFragment()).load(e.fotos.toString()).into()
         }
     }

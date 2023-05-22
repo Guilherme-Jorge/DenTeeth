@@ -11,6 +11,8 @@ import br.edu.puccampinas.denteeth.databinding.FragmentEmergenciaBinding
 import com.bumptech.glide.Glide
 import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.functions.ktx.functions
 import com.google.firebase.ktx.Firebase
@@ -23,6 +25,7 @@ class EmergenciaFragment : Fragment() {
 
     private lateinit var functions: FirebaseFunctions
     private val gson = GsonBuilder().enableComplexMapKeySerialization().create()
+    private lateinit var auth: FirebaseAuth
 
     private var _binding: FragmentEmergenciaBinding? = null
     private val binding get() = _binding!!
@@ -80,6 +83,7 @@ class EmergenciaFragment : Fragment() {
 
     private fun responderChamado(check: Boolean): Task<CustomResponse> {
         functions = Firebase.functions("southamerica-east1")
+        auth = Firebase.auth
 
         var status = "ACEITA"
 
@@ -88,11 +92,9 @@ class EmergenciaFragment : Fragment() {
         }
 
         val dadosChamado = hashMapOf(
-            // TODO: Adcionar UID do usuario
-            "profissional" to "user",
-            "emergencia" to (activity as AtenderEmergenciaActivity).intent.hasExtra("id"),
-            "status" to status,
-            "dataHora" to "05/05/2023"
+            "profissional" to auth.currentUser!!.uid,
+            "emergencia" to (activity as AtenderEmergenciaActivity).intent.getStringExtra("id"),
+            "status" to status
         )
 
         return functions
