@@ -30,8 +30,9 @@
     <string name="label_confirmar">Confirmar</string>
     <string name="title_activity_criar_conta">CriarContaActivity</string>
     <string name="title_activity_lista_emergencia">ListaEmergenciaActivity</string>
-    <string name="default_notification_channel_id" translatable="false">canal_padrao</string>
+    <string name="default_notification_channel_id" translatable="false">default_channel</string>
     <string name="fcm_default_title_message" translatable="false">Nova Emergência</string>
+    <string name="fcm_secondary_title_message" translatable="false">Resposta do Socorrista</string>
     <string name="label_emergencia">Emergência</string>
     <string name="label_perfil">Perfil</string>
     <string name="label_reputacao">Reputação</string>

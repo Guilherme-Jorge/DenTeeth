@@ -13,6 +13,7 @@ import br.edu.puccampinas.denteeth.CustomResponse
 import br.edu.puccampinas.denteeth.R
 import br.edu.puccampinas.denteeth.datastore.UserPreferencesRepository
 import br.edu.puccampinas.denteeth.emergencia.AtenderEmergenciaActivity
+import br.edu.puccampinas.denteeth.emergencia.EmergenciaFragment
 import com.google.android.gms.tasks.Task
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.functions.ktx.functions
@@ -29,8 +30,13 @@ class DefaultMessageService : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         val msgData = remoteMessage.data
-        val msg = msgData["descricao"]
-        showNotification(msg!!, msgData)
+        if (msgData["descricao"] != null) {
+            val msg = msgData["descricao"]
+            showNotificationEmergencia(msg!!, msgData)
+        } else {
+            val msg = msgData["texto"]
+            showNotificationResposta(msg!!)
+        }
     }
 
     override fun onNewToken(token: String) {
@@ -71,7 +77,7 @@ class DefaultMessageService : FirebaseMessagingService() {
         }
     }
 
-    private fun showNotification(messageBody: String, messageData: Map<String, String>) {
+    private fun showNotificationEmergencia(messageBody: String, messageData: Map<String, String>) {
         val intent = Intent(this, AtenderEmergenciaActivity::class.java)
         intent.action = "actionstring" + System.currentTimeMillis()
         intent.putExtra("nome", messageData["nome"])
@@ -91,6 +97,34 @@ class DefaultMessageService : FirebaseMessagingService() {
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.drawable.ic_tooth)
             .setContentTitle(getString(R.string.fcm_default_title_message))
+            .setContentText(messageBody)
+            .setColor(ContextCompat.getColor(this, R.color.blue_main))
+            .setAutoCancel(true)
+            .setSound(defaultSoundUri)
+            .setContentIntent(pendingIntent)
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val channel = NotificationChannel(
+            channelId,
+            "Channel human readable title",
+            NotificationManager.IMPORTANCE_DEFAULT
+        )
+        notificationManager.createNotificationChannel(channel)
+        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build())
+    }
+
+    private fun showNotificationResposta(messageBody: String) {
+        val intent = Intent(this, EmergenciaFragment::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        val pendingIntent = PendingIntent.getActivity(
+            this, 0 /* Request code */, intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+        val channelId = getString(R.string.default_notification_channel_id)
+        val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+        val notificationBuilder = NotificationCompat.Builder(this, channelId)
+            .setSmallIcon(R.drawable.ic_tooth)
+            .setContentTitle(getString(R.string.fcm_secondary_title_message))
             .setContentText(messageBody)
             .setColor(ContextCompat.getColor(this, R.color.blue_main))
             .setAutoCancel(true)
