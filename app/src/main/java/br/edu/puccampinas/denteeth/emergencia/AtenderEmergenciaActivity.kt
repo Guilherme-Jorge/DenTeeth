@@ -1,6 +1,9 @@
 package br.edu.puccampinas.denteeth.emergencia
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
@@ -23,7 +26,7 @@ class AtenderEmergenciaActivity : AppCompatActivity() {
         binding = ActivityAtenderEmergenciaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(binding.tbNavbar)
 
         val navController = findNavController(R.id.nav_host_fragment_content_lista_emergencia)
         appBarConfiguration = AppBarConfiguration(navController.graph)
@@ -34,5 +37,11 @@ class AtenderEmergenciaActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_lista_emergencia)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    fun copyToClipboard(text: String?) {
+        val cm = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+        val clipData = ClipData.newPlainText("telefone", text)
+        cm.setPrimaryClip(clipData)
     }
 }
