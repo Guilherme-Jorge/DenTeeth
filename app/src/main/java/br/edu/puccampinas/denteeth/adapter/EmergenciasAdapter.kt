@@ -1,5 +1,6 @@
 package br.edu.puccampinas.denteeth.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.puccampinas.denteeth.R
 import br.edu.puccampinas.denteeth.classes.Emergencia
+import br.edu.puccampinas.denteeth.emergencia.AtenderEmergenciaActivity
+import com.bumptech.glide.Glide
 
 class EmergenciasAdapter(private val dataSet: List<Emergencia>) : ListAdapter<Emergencia, EmergenciasAdapter.EmergenciaViewHolder>(EmergenciaDiffCallback) {
     class EmergenciaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -20,7 +23,7 @@ class EmergenciasAdapter(private val dataSet: List<Emergencia>) : ListAdapter<Em
         fun bind(e: Emergencia) {
             emergenciaCurrent = e
             tvEmergenciaTempo.text = e.dataHora.toString()
-//            Glide.with(ListaEmergenciasFragment()).load(e.fotos.toString()).into()
+            Glide.with(ivEmergenciaFoto.context).load(e.fotos.toString()).into(ivEmergenciaFoto)
         }
     }
 
@@ -33,6 +36,20 @@ class EmergenciasAdapter(private val dataSet: List<Emergencia>) : ListAdapter<Em
     override fun onBindViewHolder(holder: EmergenciaViewHolder, position: Int) {
         val t = dataSet[position]
         holder.bind(t)
+
+        holder.itemView.setOnClickListener {
+            val intentEmergencia = Intent(it.context, AtenderEmergenciaActivity::class.java)
+//            intentEmergencia.action = "actionstring" + System.currentTimeMillis()
+            intentEmergencia.putExtra("nome", t.nome.toString())
+            intentEmergencia.putExtra("telefone", t.telefone.toString())
+            intentEmergencia.putExtra("fotos", t.fotos.toString())
+            intentEmergencia.putExtra("status", t.status.toString())
+            intentEmergencia.putExtra("descricao", t.descricao.toString())
+            intentEmergencia.putExtra("dataHora", t.dataHora.toString())
+            intentEmergencia.putExtra("id", t.id.toString())
+
+            it.context.startActivity(intentEmergencia)
+        }
     }
 
     override fun getItemCount() = dataSet.size

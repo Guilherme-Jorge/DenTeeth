@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     android:orientation="vertical"
-    app:cardElevation="8dp"
     app:cardCornerRadius="8dp"
-    android:layout_margin="8dp">
+    app:cardElevation="8dp">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="4dp">
+
         <TextView
             android:id="@+id/tvEmergenciaTempo"
             android:layout_width="wrap_content"
@@ -19,12 +22,12 @@
             android:fontFamily="@font/inter_regular"
             android:textSize="12sp" />
 
-    <ImageView
+        <ImageView
             android:id="@+id/ivEmergenciaFoto"
             android:layout_width="145dp"
             android:layout_height="145dp"
             android:layout_below="@id/tvEmergenciaTempo"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="4dp" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

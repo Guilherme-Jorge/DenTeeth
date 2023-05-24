@@ -118,11 +118,6 @@ class TelaInicioActivity : AppCompatActivity() {
                     val intentTelaPrincipal = Intent(this, TelaPrincipalActivity::class.java)
 
                     this.startActivity(intentTelaPrincipal)
-                    Snackbar.make(
-                        binding.root,
-                        "Login realizado com sucesso!",
-                        Snackbar.LENGTH_LONG
-                    ).show()
                 } else {
                     if (it.exception is FirebaseAuthException) {
                         Snackbar.make(

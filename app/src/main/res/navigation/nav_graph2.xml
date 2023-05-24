@@ -12,17 +12,23 @@
         tools:layout="@layout/fragment_emergencia">
 
         <action
-            android:id="@+id/action_EmergenciaFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_EmergenciaFragment_to_AguardandoRespostaFragment"
+            app:destination="@id/AguardandoRespostaFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="br.edu.puccampinas.denteeth.emergencia.SecondFragment"
-        android:label="Second Fragment"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/AguardandoRespostaFragment"
+        android:name="br.edu.puccampinas.denteeth.emergencia.AguardandoRespostaFragment"
+        android:label="Aguardando Resposta"
+        tools:layout="@layout/fragment_aguardando_resposta">
 
         <action
-            android:id="@+id/action_SecondFragment_to_EmergenciaFragment"
-            app:destination="@id/EmergenciaFragment" />
+            android:id="@+id/action_AguardandoRespostaFragment_to_RespostaAtendimentoFragment"
+            app:destination="@id/RespostaAtendimentoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/RespostaAtendimentoFragment"
+        android:name="br.edu.puccampinas.denteeth.emergencia.RespostaAtendimentoFragment"
+        android:label="Resposta Atendimento"
+        tools:layout="@layout/fragment_resposta_atendimento">
     </fragment>
 </navigation>

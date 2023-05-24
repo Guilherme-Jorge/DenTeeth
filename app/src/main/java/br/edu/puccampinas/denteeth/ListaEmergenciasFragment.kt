@@ -66,12 +66,12 @@ class ListaEmergenciasFragment : Fragment() {
                 return@addSnapshotListener
             }
 
-            val emergencias = ArrayList<Emergencia>()
             for (document in value!!) {
                 emergencia = Emergencia(
                     document.data["dataHora"].toString(),
                     document.data["descricao"].toString(),
                     document.data["fotos"].toString(),
+                    document.data["id"].toString(),
                     document.data["nome"].toString(),
                     document.data["status"].toString(),
                     document.data["telefone"].toString()

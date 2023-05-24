@@ -7,13 +7,13 @@
     tools:context=".emergencia.AtenderEmergenciaActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+        android:id="@+id/abNavbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/tbNavbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize" />
 
