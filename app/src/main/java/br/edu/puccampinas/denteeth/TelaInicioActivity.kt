@@ -4,24 +4,26 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import br.edu.puccampinas.denteeth.databinding.ActivityTelaInicioBinding
 import br.edu.puccampinas.denteeth.datastore.UserPreferencesRepository
-import br.edu.puccampinas.denteeth.emergencia.AtenderEmergenciaActivity
+import br.edu.puccampinas.denteeth.messaging.DefaultMessageService
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import br.edu.puccampinas.denteeth.messaging.DefaultMessageService
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.ktx.messaging
+import java.lang.Exception
 
 class TelaInicioActivity : AppCompatActivity() {
 
@@ -48,10 +50,18 @@ class TelaInicioActivity : AppCompatActivity() {
         binding = ActivityTelaInicioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         askNotificationPermission()
 
         storeFcmToken()
         Log.d("Teste", getFcmToken())
+
+
+        auth = Firebase.auth
+        val usuario: FirebaseUser? = auth.currentUser
+        autologin(usuario)
+
 
         binding.btnEntrar.setOnClickListener {
             hideSoftKeyboard(binding.btnEntrar)
@@ -102,11 +112,12 @@ class TelaInicioActivity : AppCompatActivity() {
     private fun newLogin(email: String, password: String) {
         hideSoftKeyboard(binding.btnEntrar)
 
-        auth = Firebase.auth
 
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
+
                 if (it.isSuccessful) {
+
                     Log.d("Teste", auth.currentUser!!.uid)
                     storeUserId(auth.currentUser!!.uid)
                     Log.d("Teste", userPreferencesRepository.uid)
@@ -130,6 +141,26 @@ class TelaInicioActivity : AppCompatActivity() {
             }
     }
 
+    //Possível também fazer diretamente no onStart() , porém com algumas diferenças
+    private fun autologin(usuario: FirebaseUser?){
+        if (usuario != null) { // Verifica se o usuario está logado
+
+            try {
+
+                //verificar se o dentista certo está logando
+                Toast.makeText(baseContext , "Bem vindo! ${usuario.uid}", Toast.LENGTH_LONG).show()
+
+                val autointentTelaPrincipal = Intent(this, TelaPrincipalActivity::class.java)
+                this.startActivity(autointentTelaPrincipal)
+
+            } catch (e: Exception) {
+                Toast.makeText(baseContext , "Login automático falhou", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+    }
+
+
     fun storeFcmToken(){
         Firebase.messaging.token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
@@ -148,4 +179,6 @@ class TelaInicioActivity : AppCompatActivity() {
     fun getFcmToken(): String{
         return userPreferencesRepository.fcmToken
     }
+
+
 }
