@@ -133,7 +133,7 @@ class TelaInicioActivity : AppCompatActivity() {
                 }
             }
     }
-
+///
     private fun storeFcmToken(){
         Firebase.messaging.token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
