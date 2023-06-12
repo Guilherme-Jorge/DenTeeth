@@ -1,8 +1,10 @@
 package br.edu.puccampinas.denteeth
-
+import android.widget.Toast
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.ConnectivityManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,7 +15,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import br.edu.puccampinas.denteeth.databinding.ActivityTelaInicioBinding
 import br.edu.puccampinas.denteeth.datastore.UserPreferencesRepository
-import br.edu.puccampinas.denteeth.emergencia.AtenderEmergenciaActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
@@ -27,7 +28,7 @@ class TelaInicioActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTelaInicioBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var DefaultMessageService: DefaultMessageService
+    private lateinit var defaultMessageService: DefaultMessageService
     private lateinit var userPreferencesRepository: UserPreferencesRepository
 
     private val requestPermissionLauncher = registerForActivityResult(
@@ -66,7 +67,11 @@ class TelaInicioActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            newLogin(binding.etEmail.text.toString(), binding.etSenha.text.toString())
+            if (internetTestConnection()) {
+                newLogin(binding.etEmail.text.toString(), binding.etSenha.text.toString())
+            } else {
+                MostrarToastInternet("Internet não conectada")
+            }
         }
 
         binding.btnRegistrar.setOnClickListener {
@@ -80,7 +85,6 @@ class TelaInicioActivity : AppCompatActivity() {
     }
 
     private fun hideSoftKeyboard(v: View) {
-
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(v.windowToken, 0)
     }
@@ -112,8 +116,8 @@ class TelaInicioActivity : AppCompatActivity() {
                     Log.d("Teste", userPreferencesRepository.uid)
 
 
-                    DefaultMessageService = DefaultMessageService()
-                    DefaultMessageService.sendRegistrationToServer(getFcmToken())
+                    defaultMessageService = DefaultMessageService()
+                    defaultMessageService.sendRegistrationToServer(getFcmToken())
 
                     val intentTelaPrincipal = Intent(this, TelaPrincipalActivity::class.java)
 
@@ -130,7 +134,7 @@ class TelaInicioActivity : AppCompatActivity() {
             }
     }
 
-    fun storeFcmToken(){
+    private fun storeFcmToken(){
         Firebase.messaging.token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
                 return@OnCompleteListener
@@ -140,12 +144,22 @@ class TelaInicioActivity : AppCompatActivity() {
         })
     }
 
-    fun storeUserId(uid: String){
+    private fun storeUserId(uid: String){
         userPreferencesRepository.uid = uid
         userPreferencesRepository.updateUid(uid)
     }
 
-    fun getFcmToken(): String{
+    private fun getFcmToken(): String{
         return userPreferencesRepository.fcmToken
+    }
+
+    private fun internetTestConnection(): Boolean {
+        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = connectivityManager.activeNetworkInfo
+        return networkInfo != null && networkInfo.isConnected
+    }
+
+    private fun MostrarToastInternet(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
