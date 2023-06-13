@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import br.edu.puccampinas.denteeth.CriarContaActivity
 import br.edu.puccampinas.denteeth.CustomResponse
 import br.edu.puccampinas.denteeth.R
 import br.edu.puccampinas.denteeth.TelaPrincipalActivity
@@ -51,7 +50,7 @@ class EmergenciaFragment : Fragment() {
             binding.tvMotivoEmergencia.text = descricao
 
             Glide.with(this)
-                .load((activity as AtenderEmergenciaActivity).intent.getStringExtra("fotos"))
+                .load((activity as AtenderEmergenciaActivity).intent.getStringExtra("fotos1"))
                 .into(binding.ivEmergenciaFotos)
         }
 

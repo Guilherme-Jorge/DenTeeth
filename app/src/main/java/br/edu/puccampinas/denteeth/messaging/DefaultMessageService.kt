@@ -78,11 +78,14 @@ class DefaultMessageService : FirebaseMessagingService() {
     }
 
     private fun showNotificationEmergencia(messageBody: String, messageData: Map<String, String>) {
+        val fotos = messageData["fotos"] as List<String>
         val intent = Intent(this, AtenderEmergenciaActivity::class.java)
         intent.action = "actionstring" + System.currentTimeMillis()
         intent.putExtra("nome", messageData["nome"])
         intent.putExtra("telefone", messageData["telefone"])
-        intent.putExtra("fotos", messageData["fotos"])
+        intent.putExtra("fotos1", fotos[0])
+        intent.putExtra("fotos2", fotos[1])
+        intent.putExtra("fotos3", fotos[2])
         intent.putExtra("status", messageData["status"])
         intent.putExtra("descricao", messageData["descricao"])
         intent.putExtra("dataHora", messageData["dataHora"])

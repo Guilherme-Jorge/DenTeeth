@@ -24,8 +24,8 @@
 
         <ImageView
             android:id="@+id/ivEmergenciaFoto"
-            android:layout_width="145dp"
-            android:layout_height="145dp"
+            android:layout_width="wrap_content"
+            android:layout_height="320dp"
             android:layout_below="@id/tvEmergenciaTempo"
             android:layout_marginTop="4dp" />
     </RelativeLayout>
