@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".TermosDeUsoFragment">
 
+    <ImageView
+        android:id="@+id/ivBarra3"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:src="@drawable/progress_bar_03"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSubtitulo1"
         android:layout_width="match_parent"
@@ -14,7 +21,7 @@
         android:fontFamily="@font/inter_regular"
         android:text="@string/label_subtitulo_1"
         android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/ivBarra3" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSubtitulo2"
@@ -45,12 +52,21 @@
         android:textSize="10.5sp"
         app:layout_constraintTop_toBottomOf="@id/tvSubtitulo2" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvObs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/inter_regular"
+        android:text="@string/label_obs_termos"
+        app:layout_constraintTop_toBottomOf="@id/tvTermosDeUso" />
+
     <Button
         android:id="@+id/btnAceitarTermos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
         android:fontFamily="@font/inter_regular"
         android:text="@string/label_aceitar"
         app:layout_constraintEnd_toEndOf="@id/tvObs"
@@ -62,19 +78,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
         android:fontFamily="@font/inter_regular"
         android:text="@string/label_recusar"
         app:layout_constraintEnd_toStartOf="@id/btnAceitarTermos"
         app:layout_constraintTop_toBottomOf="@id/tvObs" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvObs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/inter_regular"
-        android:text="@string/label_obs_termos"
-        app:layout_constraintTop_toBottomOf="@id/tvTermosDeUso" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
