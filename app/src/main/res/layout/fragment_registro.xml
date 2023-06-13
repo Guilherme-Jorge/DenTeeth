@@ -10,6 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/ivBarra1"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:src="@drawable/progress_bar_01"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvDadosPessoais"
             android:layout_width="match_parent"
@@ -18,7 +25,7 @@
             android:text="@string/label_dados_pessoais"
             android:textColor="@color/black"
             android:textSize="24sp"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/ivBarra1" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tiNome"

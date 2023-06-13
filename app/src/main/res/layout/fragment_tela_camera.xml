@@ -6,11 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".TelaCameraFragment">
 
+    <ImageView
+        android:id="@+id/ivBarra2"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:src="@drawable/progress_bar_02"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.camera.view.PreviewView
         android:id="@+id/pvViewFinder"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/ivBarra2" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvObs"
