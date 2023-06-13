@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import br.edu.puccampinas.denteeth.adapter.EmergenciasAdapter
 import br.edu.puccampinas.denteeth.classes.Emergencia
 import br.edu.puccampinas.denteeth.databinding.FragmentListaEmergenciasBinding
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -57,7 +58,7 @@ class ListaEmergenciasFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun loadEmergencias() {
-        val doc = db.collection("emergencias").orderBy("dataHora")
+        val doc = db.collection("emergencias").orderBy("dataHora", Query.Direction.DESCENDING)
         var emergencia: Emergencia
         doc.addSnapshotListener { value, e ->
             allEmergencias.clear()
