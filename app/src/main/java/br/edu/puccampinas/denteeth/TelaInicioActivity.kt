@@ -6,22 +6,22 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import br.edu.puccampinas.denteeth.databinding.ActivityTelaInicioBinding
 import br.edu.puccampinas.denteeth.datastore.UserPreferencesRepository
+import br.edu.puccampinas.denteeth.messaging.DefaultMessageService
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import br.edu.puccampinas.denteeth.messaging.DefaultMessageService
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.ktx.messaging
 
 class TelaInicioActivity : AppCompatActivity() {
@@ -52,7 +52,8 @@ class TelaInicioActivity : AppCompatActivity() {
         askNotificationPermission()
 
         storeFcmToken()
-        Log.d("Teste", getFcmToken())
+
+        autoLogin()
 
         binding.btnEntrar.setOnClickListener {
             hideSoftKeyboard(binding.btnEntrar)
@@ -77,9 +78,7 @@ class TelaInicioActivity : AppCompatActivity() {
         binding.btnRegistrar.setOnClickListener {
             hideSoftKeyboard(binding.btnRegistrar)
 
-            //Inicializaçâo do Intent para a tela de Registro
             val intentCriarConta = Intent(this, CriarContaActivity::class.java)
-
             this.startActivity(intentCriarConta)
         }
     }
@@ -104,17 +103,16 @@ class TelaInicioActivity : AppCompatActivity() {
     }
 
     private fun newLogin(email: String, password: String) {
-        hideSoftKeyboard(binding.btnEntrar)
-
         auth = Firebase.auth
+
+        hideSoftKeyboard(binding.btnEntrar)
 
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    Log.d("Teste", auth.currentUser!!.uid)
-                    storeUserId(auth.currentUser!!.uid)
-                    Log.d("Teste", userPreferencesRepository.uid)
 
+                if (it.isSuccessful) {
+
+                    storeUserId(auth.currentUser!!.uid)
 
                     defaultMessageService = DefaultMessageService()
                     defaultMessageService.sendRegistrationToServer(getFcmToken())
@@ -133,24 +131,27 @@ class TelaInicioActivity : AppCompatActivity() {
                 }
             }
     }
-///
-    private fun storeFcmToken(){
-        Firebase.messaging.token.addOnCompleteListener(OnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                return@OnCompleteListener
+
+    private fun autoLogin() {
+        auth = Firebase.auth
+
+        val user = auth.currentUser
+
+        if (user != null) {
+            try {
+                val intentTelaPrincipal = Intent(this, TelaPrincipalActivity::class.java)
+                this.startActivity(intentTelaPrincipal)
+
+            } catch (e: Exception) {
+                Snackbar.make(
+                    binding.root,
+                    "Login automático falhou, faça ele manualmente.",
+                    Snackbar.LENGTH_LONG
+                ).show()
+                Log.e("TelaInicioActivity", "Erro ao realizar login automático", e)
             }
-            // guardar esse token.
-            userPreferencesRepository.fcmToken = task.result
-        })
-    }
 
-    private fun storeUserId(uid: String){
-        userPreferencesRepository.uid = uid
-        userPreferencesRepository.updateUid(uid)
-    }
-
-    private fun getFcmToken(): String{
-        return userPreferencesRepository.fcmToken
+        }
     }
 
     private fun internetTestConnection(): Boolean {
@@ -161,5 +162,24 @@ class TelaInicioActivity : AppCompatActivity() {
 
     private fun MostrarToastInternet(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+    
+    fun storeFcmToken() {
+        Firebase.messaging.token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                return@OnCompleteListener
+            }
+            // guardar esse token.
+            userPreferencesRepository.fcmToken = task.result
+        })
+    }
+
+    fun storeUserId(uid: String) {
+        userPreferencesRepository.uid = uid
+        userPreferencesRepository.updateUid(uid)
+    }
+    
+    fun getFcmToken(): String {
+        return userPreferencesRepository.fcmToken
     }
 }

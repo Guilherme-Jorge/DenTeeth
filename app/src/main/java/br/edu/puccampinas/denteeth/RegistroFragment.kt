@@ -72,6 +72,8 @@ class RegistroFragment : Fragment() {
                 binding.etEmail.text.toString(),
                 binding.etTelefone.text.toString(),
                 binding.etEndereco1.text.toString(),
+                binding.etEndereco2.text.toString(),
+                binding.etEndereco3.text.toString(),
                 binding.etCurriculo.text.toString(),
                 (activity as CriarContaActivity).getFcmToken()
             )
@@ -84,6 +86,8 @@ class RegistroFragment : Fragment() {
         email: String,
         telefone: String,
         endereco1: String,
+        endereco2: String,
+        endereco3: String,
         curriculo: String,
         fcmToken: String
     ) {
@@ -102,6 +106,8 @@ class RegistroFragment : Fragment() {
                         email,
                         telefone,
                         endereco1,
+                        endereco2,
+                        endereco3,
                         curriculo,
                         user.uid,
                         fcmToken
@@ -131,6 +137,8 @@ class RegistroFragment : Fragment() {
         email: String,
         telefone: String,
         endereco1: String,
+        endereco2: String,
+        endereco3: String,
         curriculo: String,
         uid: String,
         fcmToken: String
@@ -143,6 +151,8 @@ class RegistroFragment : Fragment() {
             "telefone" to telefone,
             "email" to email,
             "endereco1" to endereco1,
+            "endereco2" to endereco2,
+            "endereco3" to endereco3,
             "curriculo" to curriculo,
             "uid" to uid,
             "fcmToken" to fcmToken,
