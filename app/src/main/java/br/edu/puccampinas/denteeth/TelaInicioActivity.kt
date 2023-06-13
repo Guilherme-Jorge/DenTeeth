@@ -1,5 +1,5 @@
 package br.edu.puccampinas.denteeth
-import android.widget.Toast
+
 import android.Manifest
 import android.content.Context
 import android.content.Intent
@@ -71,7 +71,11 @@ class TelaInicioActivity : AppCompatActivity() {
             if (internetTestConnection()) {
                 newLogin(binding.etEmail.text.toString(), binding.etSenha.text.toString())
             } else {
-                MostrarToastInternet("Internet não conectada")
+                Snackbar.make(
+                    binding.root,
+                    "Internet não conectada.",
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
         }
 
@@ -155,15 +159,12 @@ class TelaInicioActivity : AppCompatActivity() {
     }
 
     private fun internetTestConnection(): Boolean {
-        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager =
+            getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo = connectivityManager.activeNetworkInfo
         return networkInfo != null && networkInfo.isConnected
     }
 
-    private fun MostrarToastInternet(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-    
     fun storeFcmToken() {
         Firebase.messaging.token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
@@ -178,7 +179,7 @@ class TelaInicioActivity : AppCompatActivity() {
         userPreferencesRepository.uid = uid
         userPreferencesRepository.updateUid(uid)
     }
-    
+
     fun getFcmToken(): String {
         return userPreferencesRepository.fcmToken
     }
