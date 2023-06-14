@@ -1,36 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF0000"
+    android:layout_gravity="center_horizontal"
+    android:layout_margin="20dp"
     tools:context=".Second2Fragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+    <ImageView
+        android:id="@+id/ivFotoPerfil"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
-        <Button
-            android:id="@+id/button_second"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Temp"
-            app:layout_constraintBottom_toTopOf="@id/textview_second"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textview_second"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Temp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_second" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEditar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivFotoPerfil"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome"
+        android:textSize="22sp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnEditar"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvEspecialista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Especialização"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvNome"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAtendimentosTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Atendimentos"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="-200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvEspecialista"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAtendimentosValor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valor"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="-200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAtendimentosTitulo"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAvaliacaoTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Avaliação"
+        android:textSize="19sp"
+        android:layout_marginLeft="150dp"
+        app:layout_constraintStart_toStartOf="@id/tvAtendimentosTitulo"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvEspecialista"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAAvaliacaoValor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nota: 5"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="175dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAvaliacaoTitulo"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSwitchTiulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status para atendimentos"
+        android:textSize="20dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintTop_toBottomOf="@id/tvAAvaliacaoValor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/sbStatusPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tvSwitchTiulo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

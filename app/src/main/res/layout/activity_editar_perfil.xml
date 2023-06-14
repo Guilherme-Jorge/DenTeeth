@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditarPerfilActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDadosPessoais"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_regular"
+            android:text="@string/label_dados_pessoais"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/label_nome_req"
+            app:boxStrokeWidth="2dp"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@id/tvDadosPessoais">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_regular" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiTelefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/label_telefone_req"
+            app:boxStrokeWidth="2dp"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@id/tiNome">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etTelefone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_regular" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiEndereco1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/label_endereco1_req"
+            app:boxStrokeWidth="2dp"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@id/tiTelefone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEndereco1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_regular" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiEndereco2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/label_endereco2_req"
+            app:boxStrokeWidth="2dp"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@id/tiEndereco1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEndereco2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_regular" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiEndereco3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/label_endereco3_req"
+            app:boxStrokeWidth="2dp"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@id/tiEndereco2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEndereco3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_regular" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCurriculo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="2dp"
+            android:fontFamily="@font/inter_regular"
+            android:text="@string/label_curriculo"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@+id/tiEndereco3" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiCurriculo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/label_curriculo_req"
+            app:boxStrokeWidth="2dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="2000"
+            app:layout_constraintTop_toBottomOf="@id/tvCurriculo">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCurriculo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_regular"
+                android:gravity="top" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirmarDados"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/inter_regular"
+            android:text="@string/label_confirmar"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tiCurriculo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
