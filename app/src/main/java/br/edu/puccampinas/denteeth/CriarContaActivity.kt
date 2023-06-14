@@ -1,10 +1,17 @@
 package br.edu.puccampinas.denteeth
 
 import android.Manifest
+import android.app.usage.NetworkStats
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkCapabilities
+import android.net.NetworkRequest
 import android.os.Build
 import android.os.Bundle
+import android.telephony.NetworkScan
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.contract.ActivityResultContracts
@@ -21,9 +28,11 @@ import br.edu.puccampinas.denteeth.databinding.ActivityCriarContaBinding
 import br.edu.puccampinas.denteeth.datastore.UserPreferencesRepository
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.remote.ConnectivityMonitor.NetworkStatus
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.ktx.messaging
+import java.util.Objects
 
 class CriarContaActivity : AppCompatActivity() {
 
