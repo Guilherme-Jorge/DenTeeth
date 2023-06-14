@@ -31,16 +31,6 @@
         android:label="Resposta Atendimento"
         tools:layout="@layout/fragment_resposta_atendimento">
 
-        <action
-            android:id="@+id/action_RespostaAtendimentoFragment_to_MapsFragment"
-            app:destination="@id/MapsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/MapsFragment"
-        android:name="br.edu.puccampinas.denteeth.emergencia.MapsFragment"
-        android:label="Mapa Atendimento"
-        tools:layout="@layout/fragment_maps">
-
 
     </fragment>
 </navigation>

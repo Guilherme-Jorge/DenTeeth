@@ -6,9 +6,8 @@
         android:name="android.hardware.telephony"
         android:required="false" />
 
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
@@ -22,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DenTeeth"
         tools:targetApi="31">
+        <activity
+            android:name=".emergencia.MapsActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

@@ -1,5 +1,6 @@
 package br.edu.puccampinas.denteeth.emergencia
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import br.edu.puccampinas.denteeth.R
+import br.edu.puccampinas.denteeth.TelaPrincipalActivity
 import br.edu.puccampinas.denteeth.databinding.FragmentAguardandoRespostaBinding
 
 /**
