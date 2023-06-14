@@ -24,8 +24,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import java.io.File
-import java.lang.Exception
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -37,18 +37,28 @@ class TelaCameraFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var functions: FirebaseFunctions
+    private var storageRef = Firebase.storage.getReference("perfis/")
 
-    // processamento de imagem (não permitir ou controlar melhor o estado do driver da camera)
     private lateinit var cameraProviderFuture: ListenableFuture<ProcessCameraProvider>
 
-    // selecionar se deseja a camera frontal ou traseira
     private lateinit var cameraSelector: CameraSelector
 
-    // imagem capturada
     private var imageCapture: ImageCapture? = null
 
-    // executor de threads separado
     private lateinit var imgCaptureExecuter: ExecutorService
+
+    private val cameraProviderResult =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+            if (it) {
+                //
+            } else {
+                Snackbar.make(
+                    binding.root,
+                    "Você não concedeu permissôes para usar a câmera.",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -70,7 +80,6 @@ class TelaCameraFragment : Fragment() {
         cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
         imgCaptureExecuter = Executors.newSingleThreadExecutor()
 
-        // chamar o metodo startCamera()
         startCamera()
 
         binding.btnDeixarDepois.setOnClickListener {
@@ -88,19 +97,6 @@ class TelaCameraFragment : Fragment() {
         imgCaptureExecuter.shutdown()
     }
 
-    private val cameraProviderResult =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-            if (it) {
-                //
-            } else {
-                Snackbar.make(
-                    binding.root,
-                    "Você não concedeu permissôes para usar a câmera.",
-                    Snackbar.LENGTH_LONG
-                ).show()
-            }
-        }
-
     private fun startCamera() {
         cameraProviderFuture.addListener({
 
@@ -112,7 +108,6 @@ class TelaCameraFragment : Fragment() {
             }
 
             try {
-                // abrir o preview
                 cameraProvider.unbindAll()
                 cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture)
 
@@ -141,10 +136,22 @@ class TelaCameraFragment : Fragment() {
                 imgCaptureExecuter,
                 object : ImageCapture.OnImageSavedCallback {
                     override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                        Log.i("CameraPreview", "A imagem foi salva no diretório: ${file.toUri()}")
-                        val msg = "Photo capture succeeded: ${file.toUri()}"
-                        Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
-                        Log.d("CameraXExample", msg)
+                        Log.i(
+                            "TelaCameraFragment",
+                            "A imagem foi salva no diretório: ${file.toUri()}"
+                        )
+                        Snackbar.make(
+                            binding.root,
+                            "Imagem salva com sucesso: ${file.name}",
+                            Snackbar.LENGTH_LONG
+                        ).show()
+
+                        val perfisRef = storageRef.child(filename)
+                        val uploadTask = perfisRef.putFile(file.toUri()).addOnSuccessListener {
+                            val downloadUrl = perfisRef.downloadUrl.addOnSuccessListener {
+                                //
+                            }
+                        }
                     }
 
                     override fun onError(exception: ImageCaptureException) {
