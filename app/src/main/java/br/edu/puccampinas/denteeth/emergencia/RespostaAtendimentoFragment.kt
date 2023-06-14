@@ -1,15 +1,12 @@
 package br.edu.puccampinas.denteeth.emergencia
 
-import android.content.ClipboardManager
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import br.edu.puccampinas.denteeth.R
+import androidx.fragment.app.Fragment
 import br.edu.puccampinas.denteeth.databinding.FragmentRespostaAtendimentoBinding
 
 /**
@@ -37,10 +34,12 @@ class RespostaAtendimentoFragment : Fragment() {
         val telefone = (activity as AtenderEmergenciaActivity).intent.getStringExtra("telefone")
         binding.tvNumeroTelefone.text = telefone
 
-        binding.btncall.setOnClickListener {
+        binding.btncall.setOnClickListener() {
 
-//            Uri uri = Uri.parse("Tel:" + telefone);
-//            Intent ligacao = new Intent(Intent.ACTION_CALL, telefone);
+
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse("tel:$telefone")
+            startActivity(intent)
 
 
         }
