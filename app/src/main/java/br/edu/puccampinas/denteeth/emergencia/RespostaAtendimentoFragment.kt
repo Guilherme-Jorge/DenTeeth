@@ -39,14 +39,15 @@ class RespostaAtendimentoFragment : Fragment() {
 
         binding.btncall.setOnClickListener {
 
-            //Uri uri = Uri.parse("Tel:" + telefone);
-            //Intent ligacao = new Intent(Intent.ACTION_CALL, telefone);
+//            Uri uri = Uri.parse("Tel:" + telefone);
+//            Intent ligacao = new Intent(Intent.ACTION_CALL, telefone);
 
 
         }
 
         binding.btnEnviarLocalizacao.setOnClickListener {
-            findNavController().navigate(R.id.action_RespostaAtendimentoFragment_to_MapsFragment)
+            val intentMaps = Intent(binding.root.context, MapsActivity::class.java)
+            this.startActivity(intentMaps)
         }
     }
 

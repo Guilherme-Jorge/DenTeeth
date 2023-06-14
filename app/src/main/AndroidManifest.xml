@@ -28,6 +28,9 @@
             android:exported="false"
             android:label="@string/title_activity_editar_perfil"
             android:theme="@style/Theme.DenTeeth" />
+        <activity
+            android:name=".emergencia.MapsActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
