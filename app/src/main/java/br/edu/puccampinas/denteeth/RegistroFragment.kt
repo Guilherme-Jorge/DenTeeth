@@ -116,9 +116,9 @@ class RegistroFragment : Fragment() {
                             if (res.result.status == "SUCCESS") {
                                 (activity as CriarContaActivity).hideSoftKeyboard(binding.btnConfirmarDados)
                                 Snackbar.make(
-                                    requireView(),
+                                    binding.root,
                                     "Usuário cadastrado com sucesso!",
-                                    Snackbar.LENGTH_LONG
+                                    Snackbar.LENGTH_SHORT
                                 ).show()
                                 findNavController().navigate(R.id.action_RegistroFragment_to_TelaCameraFragment)
                             }
@@ -156,7 +156,8 @@ class RegistroFragment : Fragment() {
             "curriculo" to curriculo,
             "uid" to uid,
             "fcmToken" to fcmToken,
-            "status" to true
+            "status" to true,
+            "criado" to false
         )
 
         return functions

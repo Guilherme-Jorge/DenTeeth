@@ -18,13 +18,16 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import br.edu.puccampinas.denteeth.databinding.FragmentTelaCameraBinding
+import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
 import com.google.common.util.concurrent.ListenableFuture
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.functions.FirebaseFunctions
+import com.google.firebase.functions.ktx.functions
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import com.google.gson.GsonBuilder
 import java.io.File
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -38,6 +41,8 @@ class TelaCameraFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var functions: FirebaseFunctions
     private var storageRef = Firebase.storage.getReference("perfis/")
+
+    private val gson = GsonBuilder().enableComplexMapKeySerialization().create()
 
     private lateinit var cameraProviderFuture: ListenableFuture<ProcessCameraProvider>
 
@@ -83,12 +88,15 @@ class TelaCameraFragment : Fragment() {
         startCamera()
 
         binding.btnDeixarDepois.setOnClickListener {
-            takePhoto()
-
             findNavController().navigate(R.id.action_TelaCameraFragment_to_TermosDeUsoFragment)
         }
 
+        binding.btnCapture.setOnClickListener {
+            binding.btnCapture.visibility = View.GONE
+            binding.progressBar.visibility = View.VISIBLE
 
+            takePhoto()
+        }
     }
 
     override fun onDestroyView() {
@@ -147,9 +155,20 @@ class TelaCameraFragment : Fragment() {
                         ).show()
 
                         val perfisRef = storageRef.child(filename)
-                        val uploadTask = perfisRef.putFile(file.toUri()).addOnSuccessListener {
-                            val downloadUrl = perfisRef.downloadUrl.addOnSuccessListener {
-                                //
+                        perfisRef.putFile(file.toUri()).addOnSuccessListener {
+                            perfisRef.downloadUrl.addOnSuccessListener { uri ->
+                                updateUserPhoto(uri.toString(), user.uid).addOnCompleteListener(
+                                    requireActivity()
+                                ) { res ->
+                                    if (res.result.status == "SUCCESS") {
+                                        Snackbar.make(
+                                            binding.root,
+                                            "Foto salva com sucesso!",
+                                            Snackbar.LENGTH_SHORT
+                                        ).show()
+                                        findNavController().navigate(R.id.action_TelaCameraFragment_to_TermosDeUsoFragment)
+                                    }
+                                }
                             }
                         }
                     }
@@ -165,5 +184,21 @@ class TelaCameraFragment : Fragment() {
                 })
 
         }
+    }
+
+    private fun updateUserPhoto(uri: String, uid: String): Task<CustomResponse> {
+        functions = Firebase.functions("southamerica-east1")
+
+        val novosDados = hashMapOf(
+            "uri" to uri,
+            "uid" to uid
+        )
+
+        return functions.getHttpsCallable("adcionarFotoPerfil").call(novosDados)
+            .continueWith { task ->
+                val result =
+                    gson.fromJson((task.result?.data as String), CustomResponse::class.java)
+                result
+            }
     }
 }
