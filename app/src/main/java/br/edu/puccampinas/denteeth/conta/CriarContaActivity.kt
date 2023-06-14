@@ -1,29 +1,19 @@
-package br.edu.puccampinas.denteeth
+package br.edu.puccampinas.denteeth.conta
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import br.edu.puccampinas.denteeth.R
+import br.edu.puccampinas.denteeth.TelaInicioActivity
 import br.edu.puccampinas.denteeth.databinding.ActivityCriarContaBinding
 import br.edu.puccampinas.denteeth.datastore.UserPreferencesRepository
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
-import com.google.firebase.functions.FirebaseFunctions
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.messaging.ktx.messaging
 
 class CriarContaActivity : AppCompatActivity() {
 

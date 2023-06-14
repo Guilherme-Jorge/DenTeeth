@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/RegistroFragment"
-        android:name="br.edu.puccampinas.denteeth.RegistroFragment"
+        android:name="br.edu.puccampinas.denteeth.conta.RegistroFragment"
         android:label="@string/label_crie_sua_conta"
         tools:layout="@layout/fragment_registro">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/TelaCameraFragment"
-        android:name="br.edu.puccampinas.denteeth.TelaCameraFragment"
+        android:name="br.edu.puccampinas.denteeth.conta.TelaCameraFragment"
         android:label="@string/label_tirar_selfie"
         tools:layout="@layout/fragment_tela_camera">
 
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/TermosDeUsoFragment"
-        android:name="br.edu.puccampinas.denteeth.TermosDeUsoFragment"
+        android:name="br.edu.puccampinas.denteeth.conta.TermosDeUsoFragment"
         android:label="@string/label_termos_de_uso"
         tools:layout="@layout/fragment_termos_de_uso" />
 

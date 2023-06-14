@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import br.edu.puccampinas.denteeth.conta.CriarContaActivity
 import br.edu.puccampinas.denteeth.databinding.ActivityTelaInicioBinding
 import br.edu.puccampinas.denteeth.datastore.UserPreferencesRepository
 import br.edu.puccampinas.denteeth.messaging.DefaultMessageService

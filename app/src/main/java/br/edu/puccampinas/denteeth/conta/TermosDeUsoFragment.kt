@@ -1,24 +1,19 @@
-package br.edu.puccampinas.denteeth
+package br.edu.puccampinas.denteeth.conta
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import br.edu.puccampinas.denteeth.classes.CustomResponse
 import br.edu.puccampinas.denteeth.databinding.FragmentTermosDeUsoBinding
 import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.functions.FirebaseFunctions
-import com.google.firebase.functions.FirebaseFunctionsException
 import com.google.firebase.functions.ktx.functions
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
 import com.google.gson.GsonBuilder
 
 class TermosDeUsoFragment : Fragment() {

@@ -31,18 +31,18 @@
             android:label="@string/title_activity_lista_emergencia"
             android:theme="@style/Theme.DenTeeth" />
         <activity
-            android:name=".CriarContaActivity"
+            android:name=".conta.CriarContaActivity"
             android:exported="false"
             android:label="@string/title_activity_criar_conta"
             android:theme="@style/Theme.DenTeeth" />
         <activity
-            android:name=".TelaCameraFragment"
+            android:name=".conta.TelaCameraFragment"
             android:exported="false" />
         <activity
-            android:name=".RegistroFragment"
+            android:name=".conta.RegistroFragment"
             android:exported="false" />
         <activity
-            android:name=".TermosDeUsoFragment"
+            android:name=".conta.TermosDeUsoFragment"
             android:exported="false" />
         <activity
             android:name=".TelaInicioActivity"
