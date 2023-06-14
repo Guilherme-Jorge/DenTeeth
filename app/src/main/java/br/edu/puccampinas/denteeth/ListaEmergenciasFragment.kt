@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import br.edu.puccampinas.denteeth.adapter.EmergenciasAdapter
 import br.edu.puccampinas.denteeth.classes.Emergencia
 import br.edu.puccampinas.denteeth.databinding.FragmentListaEmergenciasBinding
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -60,6 +61,7 @@ class ListaEmergenciasFragment : Fragment() {
     private fun loadEmergencias() {
         val doc = db.collection("emergencias").orderBy("dataHora", Query.Direction.DESCENDING)
         var emergencia: Emergencia
+        var fotos: List<String>
         doc.addSnapshotListener { value, e ->
             allEmergencias.clear()
             if (e != null) {
@@ -68,11 +70,15 @@ class ListaEmergenciasFragment : Fragment() {
             }
 
             for (document in value!!) {
+                fotos = document.data["fotos"] as List<String>
+
                 emergencia = Emergencia(
-                    document.data["dataHora"].toString(),
+                    document.data["dataHora"] as Timestamp,
                     document.data["descricao"].toString(),
-                    document.data["fotos"].toString(),
-                    document.data["id"].toString(),
+                    fotos[0],
+                    fotos[1],
+                    fotos[2],
+                    document.id,
                     document.data["nome"].toString(),
                     document.data["status"].toString(),
                     document.data["telefone"].toString()

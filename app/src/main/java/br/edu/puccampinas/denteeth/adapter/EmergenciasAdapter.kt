@@ -22,8 +22,8 @@ class EmergenciasAdapter(private val dataSet: List<Emergencia>) : ListAdapter<Em
 
         fun bind(e: Emergencia) {
             emergenciaCurrent = e
-            tvEmergenciaTempo.text = e.dataHora.toString()
-            Glide.with(ivEmergenciaFoto.context).load(e.fotos.toString()).into(ivEmergenciaFoto)
+            tvEmergenciaTempo.text = e.dataHora!!.toDate().toLocaleString()
+            Glide.with(ivEmergenciaFoto.context).load(e.fotos1.toString()).into(ivEmergenciaFoto)
         }
     }
 
@@ -39,13 +39,14 @@ class EmergenciasAdapter(private val dataSet: List<Emergencia>) : ListAdapter<Em
 
         holder.itemView.setOnClickListener {
             val intentEmergencia = Intent(it.context, AtenderEmergenciaActivity::class.java)
-//            intentEmergencia.action = "actionstring" + System.currentTimeMillis()
             intentEmergencia.putExtra("nome", t.nome.toString())
             intentEmergencia.putExtra("telefone", t.telefone.toString())
-            intentEmergencia.putExtra("fotos", t.fotos.toString())
+            intentEmergencia.putExtra("fotos1", t.fotos1.toString())
+            intentEmergencia.putExtra("fotos2", t.fotos2.toString())
+            intentEmergencia.putExtra("fotos3", t.fotos3.toString())
             intentEmergencia.putExtra("status", t.status.toString())
             intentEmergencia.putExtra("descricao", t.descricao.toString())
-            intentEmergencia.putExtra("dataHora", t.dataHora.toString())
+            intentEmergencia.putExtra("dataHora", t.dataHora!!.toDate().toInstant().toString())
             intentEmergencia.putExtra("id", t.id.toString())
 
             it.context.startActivity(intentEmergencia)
@@ -61,6 +62,6 @@ object EmergenciaDiffCallback : DiffUtil.ItemCallback<Emergencia>() {
     }
 
     override fun areContentsTheSame(oldItem: Emergencia, newItem: Emergencia): Boolean {
-        return oldItem.fotos.toString() == newItem.fotos.toString()
+        return oldItem.fotos1.toString() == newItem.fotos1.toString()
     }
 }
