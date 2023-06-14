@@ -30,6 +30,7 @@ class DefaultMessageService : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         val msgData = remoteMessage.data
+        Log.d("Teste", msgData.toString())
         if (msgData["descricao"] != null) {
             val msg = msgData["descricao"]
             showNotificationEmergencia(msg!!, msgData)

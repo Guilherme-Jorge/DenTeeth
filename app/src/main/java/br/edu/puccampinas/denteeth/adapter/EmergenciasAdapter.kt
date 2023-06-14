@@ -39,7 +39,6 @@ class EmergenciasAdapter(private val dataSet: List<Emergencia>) : ListAdapter<Em
 
         holder.itemView.setOnClickListener {
             val intentEmergencia = Intent(it.context, AtenderEmergenciaActivity::class.java)
-//            intentEmergencia.action = "actionstring" + System.currentTimeMillis()
             intentEmergencia.putExtra("nome", t.nome.toString())
             intentEmergencia.putExtra("telefone", t.telefone.toString())
             intentEmergencia.putExtra("fotos1", t.fotos1.toString())

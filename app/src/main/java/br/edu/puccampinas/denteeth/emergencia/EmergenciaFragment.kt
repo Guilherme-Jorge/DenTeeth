@@ -83,6 +83,48 @@ class EmergenciaFragment : Fragment() {
                 }
             }
         }
+
+        binding.btnImagem1.setOnClickListener {
+            Glide.with(this)
+                .load((activity as AtenderEmergenciaActivity).intent.getStringExtra("fotos1"))
+                .into(binding.ivEmergenciaFotos)
+
+            binding.btnImagem1.setTextColor(resources.getColor(R.color.gray))
+            binding.btnImagem2.setTextColor(resources.getColor(R.color.baby_blue_500))
+            binding.btnImagem3.setTextColor(resources.getColor(R.color.baby_blue_500))
+
+            binding.btnImagem1.isClickable = false
+            binding.btnImagem2.isClickable = true
+            binding.btnImagem3.isClickable = true
+        }
+
+        binding.btnImagem2.setOnClickListener {
+            Glide.with(this)
+                .load((activity as AtenderEmergenciaActivity).intent.getStringExtra("fotos2"))
+                .into(binding.ivEmergenciaFotos)
+
+            binding.btnImagem1.setTextColor(resources.getColor(R.color.baby_blue_500))
+            binding.btnImagem2.setTextColor(resources.getColor(R.color.gray))
+            binding.btnImagem3.setTextColor(resources.getColor(R.color.baby_blue_500))
+
+            binding.btnImagem1.isClickable = true
+            binding.btnImagem2.isClickable = false
+            binding.btnImagem3.isClickable = true
+        }
+
+        binding.btnImagem3.setOnClickListener {
+            Glide.with(this)
+                .load((activity as AtenderEmergenciaActivity).intent.getStringExtra("fotos3"))
+                .into(binding.ivEmergenciaFotos)
+
+            binding.btnImagem1.setTextColor(resources.getColor(R.color.baby_blue_500))
+            binding.btnImagem2.setTextColor(resources.getColor(R.color.baby_blue_500))
+            binding.btnImagem3.setTextColor(resources.getColor(R.color.gray))
+
+            binding.btnImagem1.isClickable = true
+            binding.btnImagem2.isClickable = true
+            binding.btnImagem3.isClickable = false
+        }
     }
 
     override fun onDestroyView() {
