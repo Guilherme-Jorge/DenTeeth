@@ -1,4 +1,4 @@
-package br.edu.puccampinas.denteeth
+package br.edu.puccampinas.denteeth.conta
 
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import br.edu.puccampinas.denteeth.classes.CustomResponse
+import br.edu.puccampinas.denteeth.R
 import br.edu.puccampinas.denteeth.databinding.FragmentRegistroBinding
 import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
@@ -116,9 +118,9 @@ class RegistroFragment : Fragment() {
                             if (res.result.status == "SUCCESS") {
                                 (activity as CriarContaActivity).hideSoftKeyboard(binding.btnConfirmarDados)
                                 Snackbar.make(
-                                    requireView(),
+                                    binding.root,
                                     "Usuário cadastrado com sucesso!",
-                                    Snackbar.LENGTH_LONG
+                                    Snackbar.LENGTH_SHORT
                                 ).show()
                                 findNavController().navigate(R.id.action_RegistroFragment_to_TelaCameraFragment)
                             }
@@ -156,7 +158,8 @@ class RegistroFragment : Fragment() {
             "curriculo" to curriculo,
             "uid" to uid,
             "fcmToken" to fcmToken,
-            "status" to true
+            "status" to true,
+            "criado" to false
         )
 
         return functions

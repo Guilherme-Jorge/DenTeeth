@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import br.edu.puccampinas.denteeth.CustomResponse
+import br.edu.puccampinas.denteeth.classes.CustomResponse
 import br.edu.puccampinas.denteeth.R
 import br.edu.puccampinas.denteeth.TelaPrincipalActivity
 import br.edu.puccampinas.denteeth.databinding.FragmentEmergenciaBinding
