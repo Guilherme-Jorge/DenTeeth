@@ -1,11 +1,15 @@
 package br.edu.puccampinas.denteeth.emergencia
 
 import android.content.ClipboardManager
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import br.edu.puccampinas.denteeth.R
 import br.edu.puccampinas.denteeth.databinding.FragmentRespostaAtendimentoBinding
 
 /**
@@ -33,8 +37,16 @@ class RespostaAtendimentoFragment : Fragment() {
         val telefone = (activity as AtenderEmergenciaActivity).intent.getStringExtra("telefone")
         binding.tvNumeroTelefone.text = telefone
 
-        binding.btnCopy.setOnClickListener {
-            (activity as AtenderEmergenciaActivity).copyToClipboard(telefone)
+        binding.btncall.setOnClickListener {
+
+            //Uri uri = Uri.parse("Tel:" + telefone);
+            //Intent ligacao = new Intent(Intent.ACTION_CALL, telefone);
+
+
+        }
+
+        binding.btnEnviarLocalizacao.setOnClickListener {
+            findNavController().navigate(R.id.action_RespostaAtendimentoFragment_to_MapsFragment)
         }
     }
 
