@@ -37,18 +37,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        lat = intent.getStringExtra("lat")!!
-        lng = intent.getStringExtra("lng")!!
-        titulo = intent.getStringExtra("titulo")!!
-        endereco = intent.getStringExtra("endereco")!!
-
-        Log.d("Teste", lat + lng + titulo + endereco)
-
-        latsocorrista = lat.toDouble()
-        lngsocorrista = lng.toDouble()
 
         fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this)
         buscarlocation()
@@ -87,6 +78,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         val latLng = LatLng(currentLocation.latitude, currentLocation.longitude)
+
+        lat = intent.getStringExtra("lat")!!
+        lng = intent.getStringExtra("lng")!!
+        titulo = intent.getStringExtra("titulo")!!
+        endereco = intent.getStringExtra("endereco")!!
+
+        latsocorrista = lat.toDouble()
+        lngsocorrista = lng.toDouble()
+
         val makerOptions = MarkerOptions().position(latLng).title("Você está aqui")
         googleMap?.animateCamera(CameraUpdateFactory.newLatLng(latLng))
         googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5f))

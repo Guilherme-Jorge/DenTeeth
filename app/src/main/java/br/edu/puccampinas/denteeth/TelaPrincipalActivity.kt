@@ -1,5 +1,6 @@
 package br.edu.puccampinas.denteeth
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -45,5 +46,11 @@ class TelaPrincipalActivity : AppCompatActivity() {
         val fragmentTransaction = fragmentSupportManager.beginTransaction()
         fragmentTransaction.replace(R.id.flFragment, fragment)
         fragmentTransaction.commit()
+    }
+
+    fun goToEditarPerfil() {
+        val intentEditarPerfil = Intent(binding.root.context, EditarPerfilActivity::class.java)
+
+        this.startActivity(intentEditarPerfil)
     }
 }

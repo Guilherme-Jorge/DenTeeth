@@ -1,5 +1,6 @@
 package br.edu.puccampinas.denteeth
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -31,7 +32,9 @@ class PerfilFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        binding.btnEditar.setOnClickListener {
+            (activity as TelaPrincipalActivity).goToEditarPerfil()
+        }
     }
 
     override fun onDestroyView() {
