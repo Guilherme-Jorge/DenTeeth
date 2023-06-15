@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import br.edu.puccampinas.denteeth.R
 import br.edu.puccampinas.denteeth.TelaPrincipalActivity
-import br.edu.puccampinas.denteeth.databinding.ActivityAtenderEmergenciaBinding
 import br.edu.puccampinas.denteeth.databinding.ActivityMapsBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -22,20 +21,26 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
-
     private lateinit var currentLocation: Location
     private lateinit var fusedLocationProvider: FusedLocationProviderClient
     private val permissionCode = 101
     private lateinit var binding: ActivityMapsBinding
+    var lat = intent.getStringExtra("lat")
+    var lng = intent.getStringExtra("lng")
+    var titulo = intent.getStringExtra("titulo")
+    var endereco = intent.getStringExtra("endereco")
+    val latsocorrista: Double = lat!!.toDouble()
+    var lngsocorrista: Double = lng!!.toDouble()
+
+    var locationsocorrista = LatLng (latsocorrista, lngsocorrista)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this)
-        fetchLocation()
+        buscarlocation()
 
         binding.btnmapout.setOnClickListener {
             val intentMapout = Intent(binding.root.context, TelaPrincipalActivity::class.java)
@@ -48,7 +53,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         var endereco = intent.getStringExtra("endereco")
     }
 
-    private fun fetchLocation() {
+    private fun buscarlocation() {
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) !=
             PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
@@ -79,6 +84,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         googleMap?.animateCamera(CameraUpdateFactory.newLatLng(latLng))
         googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5f))
         googleMap?.addMarker(makerOptions)
+        googleMap.addMarker(
+            MarkerOptions()
+                .position(locationsocorrista)
+                .title("Título: ${titulo}")
+        )
     }
 
     override fun onRequestPermissionsResult(
@@ -90,7 +100,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         when(requestCode){
             permissionCode -> if (grantResults.isEmpty() && grantResults[0] ==
                 PackageManager.PERMISSION_GRANTED){
-                fetchLocation()
+                buscarlocation()
             }
         }
     }
