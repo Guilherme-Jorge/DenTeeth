@@ -41,6 +41,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             val intentMapout = Intent(binding.root.context, TelaPrincipalActivity::class.java)
             this.startActivity(intentMapout)
         }
+
+        var lat = intent.getStringExtra("lat")
+        var lng = intent.getStringExtra("lng")
+        var titulo = intent.getStringExtra("titulo")
+        var endereco = intent.getStringExtra("endereco")
     }
 
     private fun fetchLocation() {
