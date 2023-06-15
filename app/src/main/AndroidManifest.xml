@@ -27,6 +27,12 @@
             android:name=".emergencia.FinalizarAtendimentoActivity"
             android:exported="false" />
         <activity
+            android:name=".emergencia.AtendimentoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReputacaoRevisaoActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditarPerfilActivity"
             android:exported="false"
             android:label="@string/title_activity_editar_perfil"
