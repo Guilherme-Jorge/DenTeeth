@@ -83,7 +83,8 @@ class ReputacaoFragment : Fragment() {
                     document.data["notaAvaliacao"].toString().toInt(),
                     document.data["profissional"].toString(),
                     document.data["textoApp"].toString(),
-                    document.data["textoAvaliacao"].toString()
+                    document.data["textoAvaliacao"].toString(),
+                    document.id
                 )
 
                 allAvaliacoes.add(avaliacao)

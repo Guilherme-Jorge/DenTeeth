@@ -48,6 +48,7 @@ class AvaliacoesAdapter(private val dataSet: List<Avaliacao>) : ListAdapter<Aval
             intentAvaliacao.putExtra("textoApp", t.textoApp)
             intentAvaliacao.putExtra("textoAvaliacao", t.textoAvaliacao)
             intentAvaliacao.putExtra("dataHora", t.dataHora!!.toDate().toInstant().toString())
+            intentAvaliacao.putExtra("id", t.id.toString())
 
             it.context.startActivity(intentAvaliacao)
         }
