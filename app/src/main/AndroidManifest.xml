@@ -24,7 +24,7 @@
         android:theme="@style/Theme.DenTeeth"
         tools:targetApi="31">
         <activity
-            android:name=".ReputacaoActivity"
+            android:name=".ReputacaoRevisaoActivity"
             android:exported="false" />
         <activity
             android:name=".EditarPerfilActivity"
