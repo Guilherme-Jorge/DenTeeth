@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".emergencia.RespostaAtendimentoFragment">
+    tools:context=".emergencia.FinalizarAtendimentoActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvRespostaAtendimento"
@@ -33,7 +33,7 @@
         android:id="@+id/btnProximaTela"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Próxima tela"
+        android:text="Finalizar atendimento"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivRespostaAtendimento"
