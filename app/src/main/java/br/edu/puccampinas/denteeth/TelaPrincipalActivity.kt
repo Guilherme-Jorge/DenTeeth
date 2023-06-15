@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import br.edu.puccampinas.denteeth.databinding.ActivityTelaPrincipalBinding
-import br.edu.puccampinas.denteeth.emergencia.EmergenciaFragment
 
 class TelaPrincipalActivity : AppCompatActivity() {
 
@@ -27,7 +26,7 @@ class TelaPrincipalActivity : AppCompatActivity() {
                     true
                 }
                 R.id.item_perfil -> {
-                    replaceFragment(Second2Fragment())
+                    replaceFragment(PerfilFragment())
                     true
                 }
                 R.id.item_reputacao -> {

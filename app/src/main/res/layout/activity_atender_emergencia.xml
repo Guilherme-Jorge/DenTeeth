@@ -1,26 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:padding="8dp"
     tools:context=".emergencia.AtenderEmergenciaActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/abNavbar"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvEmergenciaTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
+        android:paddingTop="3dp"
+        android:text="Analisar Emergencia"
+        android:textSize="20sp"
+        android:theme="@style/Theme.DenTeeth.AppBarOverlay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/tbNavbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize" />
+    <ImageView
+        android:id="@+id/ivEmergenciaFotos"
+        android:layout_width="match_parent"
+        android:layout_height="388dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:paddingTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvEmergenciaTitulo" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+    <Button
+        android:id="@+id/btnImagem1"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:fontFamily="@font/inter_bold"
+        android:text="1"
+        android:textColor="@color/gray"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/btnImagem2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivEmergenciaFotos" />
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/content_lista_emergencia" />
+    <Button
+        android:id="@+id/btnImagem2"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_bold"
+        android:text="2"
+        android:textColor="@color/baby_blue_500"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/btnImagem3"
+        app:layout_constraintStart_toEndOf="@id/btnImagem1"
+        app:layout_constraintTop_toBottomOf="@id/ivEmergenciaFotos" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <Button
+        android:id="@+id/btnImagem3"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_bold"
+        android:text="3"
+        android:textColor="@color/baby_blue_500"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnImagem2"
+        app:layout_constraintTop_toBottomOf="@id/ivEmergenciaFotos" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvEmergenciaTexto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_regular"
+        android:paddingTop="10dp"
+        android:text="Motivo da Emergencia"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnImagem1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvMotivoEmergencia"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/borda"
+        android:fontFamily="@font/inter_regular"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:text="Texto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmergenciaTexto" />
+
+    <Button
+        android:id="@+id/btnAceitar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="24dp"
+        android:text="Aceitar Chamado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvMotivoEmergencia" />
+
+    <Button
+        android:id="@+id/btnNegar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="200dp"
+        android:fontFamily="@font/inter_regular"
+        android:text="Negar Chamado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMotivoEmergencia" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
