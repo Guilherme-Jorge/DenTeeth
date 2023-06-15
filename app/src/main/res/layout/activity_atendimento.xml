@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".emergencia.RespostaAtendimentoFragment">
+    tools:context=".emergencia.AtendimentoActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvRespostaAtendimento"
@@ -29,6 +29,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRespostaAtendimento" />
 
+    <TextView
+        android:id="@+id/tvNomeSocorrista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ligue para fulano"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivRespostaAtendimento" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvNumeroTelefone"
@@ -44,7 +54,7 @@
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivRespostaAtendimento"
+        app:layout_constraintTop_toBottomOf="@id/tvNomeSocorrista"
 
         />
 
@@ -56,13 +66,13 @@
         android:layout_marginEnd="55dp"
         app:icon="@drawable/ic_call"
         app:iconGravity="textStart"
+        app:layout_constraintBottom_toBottomOf="@+id/tvNumeroTelefone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvNumeroTelefone"
-        app:layout_constraintTop_toTopOf="@+id/tvNumeroTelefone"
-        app:layout_constraintBottom_toBottomOf="@+id/tvNumeroTelefone"/>
+        app:layout_constraintTop_toTopOf="@+id/tvNumeroTelefone" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvattention"
+        android:id="@+id/tvAttention"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Atenção!"
@@ -74,12 +84,12 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvtemporestante"
+        android:id="@+id/tvTempoRestante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tempo restante para fazer a ligação:"
         android:fontFamily="@font/inter_bold"
-        app:layout_constraintTop_toBottomOf="@id/tvattention"
+        app:layout_constraintTop_toBottomOf="@id/tvAttention"
         android:layout_marginEnd="50dp"
         android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,14 +97,14 @@
         />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvtemp"
+        android:id="@+id/tvTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
         android:layout_marginStart="5dp"
-        app:layout_constraintStart_toEndOf="@id/tvtemporestante"
-        app:layout_constraintTop_toTopOf="@id/tvtemporestante"
-        app:layout_constraintBottom_toBottomOf="@id/tvtemporestante"/>
+        app:layout_constraintStart_toEndOf="@id/tvTempoRestante"
+        app:layout_constraintTop_toTopOf="@id/tvTempoRestante"
+        app:layout_constraintBottom_toBottomOf="@id/tvTempoRestante"/>
 
 
     <com.google.android.material.button.MaterialButton
@@ -118,6 +128,5 @@
         app:layout_constraintEnd_toEndOf="@id/btnEnviarLocalizacao"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvNumeroTelefone" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
