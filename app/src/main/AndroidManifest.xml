@@ -24,6 +24,9 @@
         android:theme="@style/Theme.DenTeeth"
         tools:targetApi="31">
         <activity
+            android:name=".emergencia.FinalizarAtendimentoActivity"
+            android:exported="false" />
+        <activity
             android:name=".emergencia.AtendimentoActivity"
             android:exported="false" />
         <activity

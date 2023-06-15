@@ -1,0 +1,118 @@
+{
+  "project_info": {
+    "project_number": "41968075883",
+    "project_id": "denteethv1",
+    "storage_bucket": "denteethv1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41968075883:android:3e2cc0a01b1e0ad8439d2e",
+        "android_client_info": {
+          "package_name": "br.edu.puccampinas.denteeth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41968075883-dbs9tt7rcumpa4as8tq8o7bhsm37naoi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMW11bdycfr3pYvlVB7KwHKN8T3Rf-6ds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41968075883-dbs9tt7rcumpa4as8tq8o7bhsm37naoi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "41968075883-a00fe3vm7jpkh13e9j21paaq3fn2a9np.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.edu.puccampinas.denteeth.denteeth"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41968075883:android:476c088776cb6b0d439d2e",
+        "android_client_info": {
+          "package_name": "br.edu.puccampinas.denteeth.denteeth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41968075883-dbs9tt7rcumpa4as8tq8o7bhsm37naoi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMW11bdycfr3pYvlVB7KwHKN8T3Rf-6ds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41968075883-dbs9tt7rcumpa4as8tq8o7bhsm37naoi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "41968075883-a00fe3vm7jpkh13e9j21paaq3fn2a9np.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.edu.puccampinas.denteeth.denteeth"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41968075883:android:edb98cbe735e32bc439d2e",
+        "android_client_info": {
+          "package_name": "com.example.denteethapitesting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41968075883-dbs9tt7rcumpa4as8tq8o7bhsm37naoi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMW11bdycfr3pYvlVB7KwHKN8T3Rf-6ds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41968075883-dbs9tt7rcumpa4as8tq8o7bhsm37naoi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "41968075883-a00fe3vm7jpkh13e9j21paaq3fn2a9np.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.edu.puccampinas.denteeth.denteeth"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
