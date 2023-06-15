@@ -144,6 +144,11 @@ class TelaInicioActivity : AppCompatActivity() {
 
         if (user != null) {
             try {
+                storeUserId(auth.currentUser!!.uid)
+
+                defaultMessageService = DefaultMessageService()
+                defaultMessageService.sendRegistrationToServer(getFcmToken())
+
                 val intentTelaPrincipal = Intent(this, TelaPrincipalActivity::class.java)
                 this.startActivity(intentTelaPrincipal)
 
