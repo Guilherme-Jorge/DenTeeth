@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import br.edu.puccampinas.denteeth.R
@@ -25,12 +26,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var fusedLocationProvider: FusedLocationProviderClient
     private val permissionCode = 101
     private lateinit var binding: ActivityMapsBinding
-    var lat = intent.getStringExtra("lat")
-    var lng = intent.getStringExtra("lng")
-    var titulo = intent.getStringExtra("titulo")
-    var endereco = intent.getStringExtra("endereco")
-    val latsocorrista: Double = lat!!.toDouble()
-    var lngsocorrista: Double = lng!!.toDouble()
+    lateinit var lat: String
+    lateinit var lng: String
+    lateinit var titulo: String
+    lateinit var endereco: String
+    var latsocorrista: Double = 0.0
+    var lngsocorrista: Double = 0.0
 
     var locationsocorrista = LatLng (latsocorrista, lngsocorrista)
 
@@ -39,18 +40,24 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        lat = intent.getStringExtra("lat")!!
+        lng = intent.getStringExtra("lng")!!
+        titulo = intent.getStringExtra("titulo")!!
+        endereco = intent.getStringExtra("endereco")!!
+
+        Log.d("Teste", lat + lng + titulo + endereco)
+
+        latsocorrista = lat.toDouble()
+        lngsocorrista = lng.toDouble()
+
         fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this)
         buscarlocation()
 
         binding.btnmapout.setOnClickListener {
             val intentMapout = Intent(binding.root.context, TelaPrincipalActivity::class.java)
+            intentMapout.putExtra("fcmToken", intent.getStringExtra("fcmToken"))
             this.startActivity(intentMapout)
         }
-
-        var lat = intent.getStringExtra("lat")
-        var lng = intent.getStringExtra("lng")
-        var titulo = intent.getStringExtra("titulo")
-        var endereco = intent.getStringExtra("endereco")
     }
 
     private fun buscarlocation() {

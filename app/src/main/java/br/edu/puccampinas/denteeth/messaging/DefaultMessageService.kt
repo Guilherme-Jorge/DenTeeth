@@ -14,6 +14,7 @@ import br.edu.puccampinas.denteeth.R
 import br.edu.puccampinas.denteeth.datastore.UserPreferencesRepository
 import br.edu.puccampinas.denteeth.emergencia.AtenderEmergenciaActivity
 import br.edu.puccampinas.denteeth.emergencia.AtendimentoActivity
+import br.edu.puccampinas.denteeth.emergencia.MapsActivity
 import com.google.android.gms.tasks.Task
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.functions.ktx.functions
@@ -35,7 +36,7 @@ class DefaultMessageService : FirebaseMessagingService() {
             val msg = msgData["descricao"].toString()
             showNotificationEmergencia(msg, msgData)
         } else if (msgData["type"].toString() == "mapa") {
-            val msg = msgData["texto"].toString()
+            val msg = msgData["text"].toString()
             showNotificationMapa(msg, msgData)
         } else if (msgData["type"].toString() == "telefone") {
             val msg = msgData["texto"].toString()
@@ -152,7 +153,7 @@ class DefaultMessageService : FirebaseMessagingService() {
     }
 
     private fun showNotificationMapa(messageBody: String, messageData: Map<String, String>) {
-        val intent = Intent(this, AtendimentoActivity::class.java)
+        val intent = Intent(this, MapsActivity::class.java)
         intent.action = "actionstring" + System.currentTimeMillis()
         intent.putExtra("lat", messageData["lat"].toString())
         intent.putExtra("lng", messageData["lng"].toString())
